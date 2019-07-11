@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        loadAllergen()
+        loadDatabase()
         return true
     }
 
@@ -44,6 +45,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
+    func loadAllergen(){
+        DataManager.shared.loadAllergen()
+        if(DataManager.shared.allergenOnboarding!){
+            let storyboard = UIStoryboard(name: "Main", bundle: nil) //Write your
+            let viewController = storyboard.instantiateViewController(withIdentifier: "RecipeAllController") as! UINavigationController
+            self.window!.rootViewController = viewController
+            self.window!.makeKeyAndVisible()
+        }
+    }
+    func loadDatabase(){
+        DataManager.shared.loadDatabase()
+    }
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
