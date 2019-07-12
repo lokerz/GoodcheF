@@ -10,18 +10,28 @@ import UIKit
 
 class RecipeCardCell: UITableViewCell {
 
+    @IBOutlet weak var imageOutlet: UIImageView!
+    @IBOutlet weak var titleOutlet: UILabel!
+    @IBOutlet weak var subtitleOutlet: UILabel!
+    @IBOutlet weak var shadowOutlet: UIView!
+    
     var title : String?
-    var subtitle :  String?
+    var subtitle : String?
+    var imageName : String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        self.layer.cornerRadius = 15
+        imageName = "AyamSteak"
+        title = "Steak Ayam Bumbu Barbeque"
+        subtitle = "Porsi 1 Orang, 30 Menit"
+        if let image = imageName {
+            imageOutlet.image = UIImage(named: image)
+        }
+        shadowOutlet.backgroundColor = .white
+        shadowOutlet.alpha = 0.75
+        titleOutlet.text = title
+        subtitleOutlet.text = subtitle
     }
     
 }

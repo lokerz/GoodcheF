@@ -12,20 +12,26 @@ class RecipeListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableView.register(UINib(nibName: "RecipeCardCell", bundle: .main), forCellReuseIdentifier: "recipeCardCell")
+        
         // Do any additional setup after loading the view.
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCardCell", for : indexPath) as! RecipeCardCell
+        
+        return cell
+    }
     /*
     // MARK: - Navigation
 
