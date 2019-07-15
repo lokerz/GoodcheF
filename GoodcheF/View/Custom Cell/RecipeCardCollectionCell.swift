@@ -21,6 +21,7 @@ class RecipeCardCollectionCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+       //print("collection cell called")
         self.layer.cornerRadius = 15
         image = "AyamSteak"
         title = "Steak Ayam Bumbu Barbeque"

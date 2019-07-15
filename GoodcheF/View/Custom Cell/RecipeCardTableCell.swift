@@ -1,19 +1,21 @@
 //
-//  RecipeCardCell.swift
+//  RecipeCardTableCell.swift
 //  GoodcheF
 //
-//  Created by Ridwan Abdurrasyid on 10/07/19.
+//  Created by Ridwan Abdurrasyid on 15/07/19.
 //  Copyright © 2019 Mentimun Mulus. All rights reserved.
 //
 
 import UIKit
 
-class RecipeCardCell: UITableViewCell {
+class RecipeCardTableCell: UITableViewCell {
 
     @IBOutlet weak var imageOutlet: UIImageView!
+    @IBOutlet weak var shadowOutlet: UIView!
     @IBOutlet weak var titleOutlet: UILabel!
     @IBOutlet weak var subtitleOutlet: UILabel!
-    @IBOutlet weak var shadowOutlet: UIView!
+    
+    @IBOutlet weak var contentOutlet: UIView!
     
     var title : String?
     var subtitle : String?
@@ -21,6 +23,7 @@ class RecipeCardCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         self.layer.cornerRadius = 15
         imageName = "AyamSteak"
         title = "Steak Ayam Bumbu Barbeque"
@@ -32,6 +35,11 @@ class RecipeCardCell: UITableViewCell {
         shadowOutlet.alpha = 0.75
         titleOutlet.text = title
         subtitleOutlet.text = subtitle
+    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
 }

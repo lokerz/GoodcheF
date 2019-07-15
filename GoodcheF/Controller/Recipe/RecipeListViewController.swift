@@ -12,8 +12,7 @@ class RecipeListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UINib(nibName: "RecipeCardCell", bundle: .main), forCellReuseIdentifier: "recipeCardCell")
-        
+        self.tableView.register(UINib.init(nibName: "RecipeCardTableCell", bundle: nil), forCellReuseIdentifier: "recipeCardTableCell")
         // Do any additional setup after loading the view.
     }
     
@@ -28,7 +27,7 @@ class RecipeListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCardCell", for : indexPath) as! RecipeCardCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCardTableCell", for: indexPath) as! RecipeCardTableCell
         
         return cell
     }

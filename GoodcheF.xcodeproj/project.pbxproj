@@ -21,11 +21,11 @@
 		47742A3E22D73579003AD966 /* RecipeCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47742A3D22D73579003AD966 /* RecipeCategoryTableViewCell.swift */; };
 		4778A34722D5C6ED00411A37 /* RecipeCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4778A34622D5C6ED00411A37 /* RecipeCategoryTableViewController.swift */; };
 		4778A34B22D5C75F00411A37 /* DummyDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4778A34A22D5C75F00411A37 /* DummyDataModel.swift */; };
-		4778A34E22D5EDC000411A37 /* RecipeCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4778A34C22D5EDC000411A37 /* RecipeCardCell.swift */; };
-		4778A34F22D5EDC000411A37 /* RecipeCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4778A34D22D5EDC000411A37 /* RecipeCardCell.xib */; };
 		477C24C422D355A200B8F446 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C24C322D355A200B8F446 /* SettingsViewController.swift */; };
 		477C24C622D472CA00B8F446 /* RecipeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C24C522D472CA00B8F446 /* RecipeListViewController.swift */; };
 		477C24C922D49F5400B8F446 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C24C822D49F5400B8F446 /* OnboardingViewController.swift */; };
+		4788652C22DC907300F62789 /* RecipeCardTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4788652A22DC907300F62789 /* RecipeCardTableCell.swift */; };
+		4788652D22DC907300F62789 /* RecipeCardTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4788652B22DC907300F62789 /* RecipeCardTableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,11 +45,11 @@
 		47742A3D22D73579003AD966 /* RecipeCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		4778A34622D5C6ED00411A37 /* RecipeCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryTableViewController.swift; sourceTree = "<group>"; };
 		4778A34A22D5C75F00411A37 /* DummyDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataModel.swift; sourceTree = "<group>"; };
-		4778A34C22D5EDC000411A37 /* RecipeCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardCell.swift; sourceTree = "<group>"; };
-		4778A34D22D5EDC000411A37 /* RecipeCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCardCell.xib; sourceTree = "<group>"; };
 		477C24C322D355A200B8F446 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		477C24C522D472CA00B8F446 /* RecipeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewController.swift; sourceTree = "<group>"; };
 		477C24C822D49F5400B8F446 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		4788652A22DC907300F62789 /* RecipeCardTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardTableCell.swift; sourceTree = "<group>"; };
+		4788652B22DC907300F62789 /* RecipeCardTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCardTableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,10 +104,10 @@
 		47601AF822CA03FB00ED158B /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
-				4778A34C22D5EDC000411A37 /* RecipeCardCell.swift */,
-				4778A34D22D5EDC000411A37 /* RecipeCardCell.xib */,
 				47742A3822D71FA0003AD966 /* RecipeCardCollectionCell.swift */,
 				47742A3922D71FA0003AD966 /* RecipeCardCollectionCell.xib */,
+				4788652A22DC907300F62789 /* RecipeCardTableCell.swift */,
+				4788652B22DC907300F62789 /* RecipeCardTableCell.xib */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -229,9 +229,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				47601AF022C9F65100ED158B /* LaunchScreen.storyboard in Resources */,
-				4778A34F22D5EDC000411A37 /* RecipeCardCell.xib in Resources */,
 				47601AED22C9F65100ED158B /* Assets.xcassets in Resources */,
 				47601AE822C9F65000ED158B /* Main.storyboard in Resources */,
+				4788652D22DC907300F62789 /* RecipeCardTableCell.xib in Resources */,
 				47742A3B22D71FA0003AD966 /* RecipeCardCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,10 +253,10 @@
 				47601AE322C9F65000ED158B /* AppDelegate.swift in Sources */,
 				47601B0622CA050800ED158B /* RecipeHomeViewController.swift in Sources */,
 				477C24C922D49F5400B8F446 /* OnboardingViewController.swift in Sources */,
-				4778A34E22D5EDC000411A37 /* RecipeCardCell.swift in Sources */,
 				47742A3A22D71FA0003AD966 /* RecipeCardCollectionCell.swift in Sources */,
 				47601B0822CA053D00ED158B /* RecipeEachViewController.swift in Sources */,
 				4778A34B22D5C75F00411A37 /* DummyDataModel.swift in Sources */,
+				4788652C22DC907300F62789 /* RecipeCardTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

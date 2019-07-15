@@ -29,15 +29,15 @@ class RecipeHomeViewController: UIViewController {
         super.viewDidLoad()
         categoryViewController.view.isHidden = false
         listViewController.view.isHidden = false
-        UIView.animate(withDuration: 0) {
-            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: -1000)
-        }
+//        UIView.animate(withDuration: 0) {
+//            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: -1000)
+//        }
         setupNavBar()
     }
     
     func setupNavBar(){
         navigationController?.navigationBar.prefersLargeTitles = true
-        let searchController = UISearchController(searchResultsController: RecipeListViewController())
+        let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
         
         searchController.searchResultsUpdater = self
@@ -64,13 +64,13 @@ extension RecipeHomeViewController :  UISearchBarDelegate, UISearchResultsUpdati
        
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        UIView.animate(withDuration: 1) {
-            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: 0)
-        }
+//        UIView.animate(withDuration: 1) {
+//            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: 0)
+//        }
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        UIView.animate(withDuration: 1) {
-            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: -1000)
-        }
+//        UIView.animate(withDuration: 1) {
+//            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: -1000)
+//        }
     }
 }
