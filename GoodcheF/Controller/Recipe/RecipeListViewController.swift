@@ -10,9 +10,15 @@ import UIKit
 
 class RecipeListViewController: UITableViewController {
 
+    weak var delegate : HomeDelegate?
+    var recipes = [Recipe]()
+    var filteredRecipes = [Recipe]()
+    var isFiltering = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib.init(nibName: "RecipeCardTableCell", bundle: nil), forCellReuseIdentifier: "recipeCardTableCell")
+        recipes = DataManager.shared.recipeJson!
         // Do any additional setup after loading the view.
     }
     
@@ -22,14 +28,48 @@ class RecipeListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        if let parent = self.parent as? RecipeHomeViewController{
+            isFiltering = parent.isFiltering()
+        }
+        
+        if isFiltering {
+            return filteredRecipes.count
+        }
+        else{
+            return recipes.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let recipe : Recipe
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCardTableCell", for: indexPath) as! RecipeCardTableCell
         
+        if let parent = self.parent as? RecipeHomeViewController{
+            isFiltering = parent.isFiltering()
+        }
+        if isFiltering {
+            recipe = filteredRecipes[indexPath.row]
+        }
+        else{
+            recipe = recipes[indexPath.row]
+        }
+        cell.titleOutlet.text = recipe.Name
+        cell.selectionStyle = .none
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let recipe : Recipe
+        if let parent = self.parent as? RecipeHomeViewController{
+            isFiltering = parent.isFiltering()
+            if isFiltering {
+                recipe = filteredRecipes[indexPath.row]
+            }
+            else{
+                recipe = recipes[indexPath.row]
+            }
+            self.delegate?.recipeOpen(recipe)
+        }
     }
     /*
     // MARK: - Navigation

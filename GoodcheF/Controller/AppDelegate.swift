@@ -55,7 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     func loadDatabase(){
-        DataManager.shared.loadDatabase()
+        DataManager.shared.loadJson()
+        DataManager.shared.loadFavorites()
     }
     // MARK: - Core Data stack
 

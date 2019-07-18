@@ -15,8 +15,7 @@ class RecipeCardTableCell: UITableViewCell {
     @IBOutlet weak var titleOutlet: UILabel!
     @IBOutlet weak var subtitleOutlet: UILabel!
     
-    @IBOutlet weak var contentOutlet: UIView!
-    
+    @IBOutlet weak var cardOutlet: UIView!
     var title : String?
     var subtitle : String?
     var imageName : String?
@@ -24,7 +23,8 @@ class RecipeCardTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.cornerRadius = 15
+        cardOutlet.layer.cornerRadius = 20
+        cardOutlet.clipsToBounds = true
         imageName = "AyamSteak"
         title = "Steak Ayam Bumbu Barbeque"
         subtitle = "Porsi 1 Orang, 30 Menit"

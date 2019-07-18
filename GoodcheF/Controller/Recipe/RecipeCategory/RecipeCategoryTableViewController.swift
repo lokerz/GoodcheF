@@ -11,12 +11,54 @@ import UIKit
 class RecipeCategoryTableViewController: UITableViewController {
 
     let categoryArr = ["Aneka Ayam", "Aneka Nasi", "Aneka Kue dan Dessert", "Favorit"]
+    var recipeCategoryArr = [[Recipe]]()
+    var recipeSectionIndexArr = [0,1,2,3,4,5,6,7,8]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        recipeCategoryArr = [[Recipe]]()
+        loadCategory("ayam")
+        loadCategory("nasi")
+        loadCategory("kue")
+        loadFavorites()
+        
+        tableView.reloadData()
+        if let cells = tableView.visibleCells as? [RecipeCategoryTableViewCell]{
+            for cell in cells{
+                cell.reloadTableData()
+            }
+        }
+    }
+    
+    func loadCategory(_ category : String){
+        var tempArr = [Recipe]()
+        for recipe in DataManager.shared.recipeJson!{
+            if (recipe.Name?.lowercased().contains(category))!{
+                tempArr.append(recipe)
+            }
+        }
+        recipeCategoryArr.append(tempArr)
+    }
+    
+    func loadFavorites(){
+        var tempArr = [Recipe]()
+        //if DataManager.shared.recipeFavorites.count > 0{
+            for recipe in DataManager.shared.recipeJson!{
+                for favorite in DataManager.shared.recipeFavorites{
+                    if recipe.Id == favorite{
+                        tempArr.append(recipe)
+                    }
+                }
+            }
+       //}
+        recipeCategoryArr.append(tempArr)
+    }
     // MARK: - Table view data source
 
     
@@ -37,13 +79,16 @@ class RecipeCategoryTableViewController: UITableViewController {
         header.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
         header.textLabel?.textColor = .black
         header.backgroundView?.backgroundColor = .white
-        
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for : indexPath) as! RecipeCategoryTableViewCell
-        
+        cell.recipes = recipeCategoryArr[indexPath.row + indexPath.section]
+        if let parent = self.parent as? RecipeHomeViewController{
+            cell.delegate = parent
+        }
         return cell
     }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
