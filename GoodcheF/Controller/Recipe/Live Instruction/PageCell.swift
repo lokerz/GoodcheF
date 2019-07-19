@@ -22,6 +22,12 @@ class PageCell: UICollectionViewCell {
             attributedText.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.bodyText)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: UIColor.init(displayP3Red: 58/255, green: 6/255, blue: 4/255, alpha: 1)]))
             
             liveTextView.attributedText = attributedText
+            NSLayoutConstraint.activate([
+                liveTextView.topAnchor.constraint(equalTo: topAnchor, constant: 50),
+                liveTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 50),
+                liveTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+                liveTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 50)
+                ])
             liveTextView.textAlignment = .left
             
         }

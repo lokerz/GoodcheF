@@ -18,7 +18,7 @@ class OnboardingViewController: UIViewController,UITableViewDelegate, UITableVie
     
     let allergenTitles: [String] = DataManager.shared.allergenList
     let allergenSubtitles: [String] = DataManager.shared.allergenSubtitleList
-    let allergenImages: [String] = ["GLUTEN", "DAIRY", "EGG", "SHELLFISH", "NUTS", "BENZOAT"]
+    let allergenImages: [String] = ["Gluten", "Susu", "Telur", "Kepiting", "Kacang", "Kimia"]
     let cellReuseIdentifier = "cell"
     
     @IBOutlet var tableView: UITableView!
@@ -95,6 +95,10 @@ class OnboardingViewController: UIViewController,UITableViewDelegate, UITableVie
         
         cell.self.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0)
         
+        cell.myImageView.image = UIImage(named: self.allergenImages[indexPath.row])
+        
+        cell.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        
         return cell
     }
 
@@ -114,5 +118,15 @@ let context = (UIApplication.shared.delegate as! AppDelegate).persistentContaine
         DataManager.shared.saveAllergen()
         performSegue(withIdentifier: "ResepSegue", sender: self)
     }
+//    @IBAction func checkMarkAction(_ sender: UIButton) {
+//        if let button = sender as! UIbutton {
+//            if let image = UIImage(named:"Unchecked") {
+//                button.setImage(UIImage(named:"Checked.png"), forControlState: .Normal)
+//            }
+//            if let image = UIImage(named:"Checked") {
+//                button.setImage( UIImage(named:"Unchecked.png"), forControlState: .Normal)
+//            }
+//        } 
+//    }
     
 }
