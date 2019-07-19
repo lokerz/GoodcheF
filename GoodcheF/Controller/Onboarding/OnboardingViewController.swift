@@ -16,8 +16,8 @@ class OnboardingViewController: UIViewController,UITableViewDelegate, UITableVie
     @IBOutlet weak var simpanButtonOutlet: UIButton!
     @IBOutlet weak var lewatiButtonOutlet: UIButton!
     
-    let allergenTitles: [String] = ["Gluten (terigu/gandum)", "Produk susu", "Telur", "Udang/kerang/kepiting", "Kacang", "Pengawet & Perisa"]
-    let allergenSubtitles: [String] = ["Bahan gluten akan diubah secara otomatis dengan bahan lain.", "Bahan susu akan diubah secara otomatis dengan bahan lain", "Bahan telur akan otomatis dihilangkan dari resep", "Bahan udang/kerang/kepiting akan dihilangkan dari resep", "Bahan kacang akan dihilangkan dari resep", "Pengawet & perisa akan diubah secara otomatis dengan bahan lain"]
+    let allergenTitles: [String] = DataManager.shared.allergenList
+    let allergenSubtitles: [String] = DataManager.shared.allergenSubtitleList
     let allergenImages: [String] = ["GLUTEN", "DAIRY", "EGG", "SHELLFISH", "NUTS", "BENZOAT"]
     let cellReuseIdentifier = "cell"
     
@@ -80,8 +80,6 @@ class OnboardingViewController: UIViewController,UITableViewDelegate, UITableVie
         lewatiButtonOutlet.frame = CGRect(x: 80, y: 800, width: 254, height: 40)
     }
     
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.allergenTitles.count
     }
@@ -90,22 +88,16 @@ class OnboardingViewController: UIViewController,UITableViewDelegate, UITableVie
         let cell:MyCustomCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! MyCustomCell
         
         cell.myCellTitle.text = self.allergenTitles[indexPath.row]
-        cell.myCellTitle.font = UIFont(name: "SF Pro Text", size: 19)
         cell.myCellTitle.textColor = UIColor.init(displayP3Red: 58/255, green: 6/255, blue: 4/255, alpha: 1)
         
-        
         cell.myCellSubtitle.text = self.allergenSubtitles[indexPath.row]
-        cell.myCellSubtitle.font = UIFont(name: "SF Pro Text", size: 12)
         cell.myCellSubtitle.textColor = UIColor.init(displayP3Red: 58/255, green: 6/255, blue: 4/255, alpha: 1)
         
-        
-        cell.self.backgroundColor = UIColor(red: 2/255, green: 0/255, blue: 0/255, alpha: 0)
+        cell.self.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0)
         
         return cell
     }
-    
 
-    
 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     func getCheckmark() -> String{
         let checkedMark = "000000"

@@ -16,8 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        loadAllergen()
-//        loadDatabase()
+
+// TESTING THE LIVE INSTRUCTION!!!
+//        window = UIWindow()
+//        window?.makeKeyAndVisible()
+//
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .horizontal
+//        let swipingController = RecipeLiveViewController(collectionViewLayout: layout)
+//
+//        window?.rootViewController = swipingController
+        
+        loadAllergen()
+        loadDatabase()
         return true
     }
 
