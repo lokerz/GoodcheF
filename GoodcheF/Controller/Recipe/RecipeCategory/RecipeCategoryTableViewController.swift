@@ -8,26 +8,34 @@
 
 import UIKit
 
-class RecipeCategoryTableViewController: UITableViewController {
 
-    let categoryArr = ["Aneka Ayam", "Aneka Nasi", "Aneka Kue dan Dessert", "Favorit"]
+class RecipeCategoryTableViewController: UITableViewController {
+    
+
+    let categoryArr = ["Ayam & Bebek", "Daging Sapi & Kambing", "Hasil Laut", "Aneka Nasi", "Mie & Pasta", "Dibawah 30 Menit", "Favorit"]
+    let categories = [
+        ["ayam", "bebek"],
+        ["sapi", "kambing"],
+        ["ikan", "cumi", "udang", "kerang", "kepiting", "lobster"],
+        ["nasi"],
+        ["mie", "bihun", "spag"],
+    ]
     var recipeCategoryArr = [[Recipe]]()
-    var recipeSectionIndexArr = [0,1,2,3,4,5,6,7,8]
+    var recipeSectionIndexArr = [Int]()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        recipeCategoryArr = [[Recipe]]()
-        loadCategory("ayam")
-        loadCategory("nasi")
-        loadCategory("kue")
-        loadFavorites()
-        
+        sectionIndex()
+        loadCategory()
+        reloadData()
+    }
+    
+    func reloadData(){
         tableView.reloadData()
         if let cells = tableView.visibleCells as? [RecipeCategoryTableViewCell]{
             for cell in cells{
@@ -36,10 +44,40 @@ class RecipeCategoryTableViewController: UITableViewController {
         }
     }
     
-    func loadCategory(_ category : String){
+    func sectionIndex(){
+        for i in 0 ... categoryArr.count - 1{
+            recipeSectionIndexArr.append(i)
+        }
+    }
+    
+    func loadCategory(){
+        recipeCategoryArr = [[Recipe]]()
+        for category in categories{
+            loadCategory(category)
+        }
+        loadTime()
+        loadFavorites()
+       
+    }
+    
+    func loadCategory(_ category : [String]){
         var tempArr = [Recipe]()
         for recipe in DataManager.shared.recipeJson!{
-            if (recipe.Name?.lowercased().contains(category))!{
+            for item in category{
+                if recipe.Name.lowercased().contains(item) && !tempArr.contains(where: {$0.Name == recipe.Name}){
+                    tempArr.append(recipe)
+                }
+                else if recipe.Ingredient.contains(where: { $0.Name.lowercased().contains(item)}) && !tempArr.contains(where: {$0.Name == recipe.Name}){
+                    tempArr.append(recipe)
+                }
+            }
+        }
+        recipeCategoryArr.append(tempArr)
+    }
+    func loadTime(){
+        var tempArr = [Recipe]()
+        for recipe in DataManager.shared.recipeJson!{
+            if recipe.Time <= 30{
                 tempArr.append(recipe)
             }
         }
@@ -48,19 +86,15 @@ class RecipeCategoryTableViewController: UITableViewController {
     
     func loadFavorites(){
         var tempArr = [Recipe]()
-        //if DataManager.shared.recipeFavorites.count > 0{
-            for recipe in DataManager.shared.recipeJson!{
-                for favorite in DataManager.shared.recipeFavorites{
-                    if recipe.Id == favorite{
-                        tempArr.append(recipe)
-                    }
+        for recipe in DataManager.shared.recipeJson!{
+            for favorite in DataManager.shared.recipeFavorites{
+                if recipe.Id == favorite{
+                    tempArr.append(recipe)
                 }
             }
-       //}
+        }
         recipeCategoryArr.append(tempArr)
     }
-    // MARK: - Table view data source
-
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -82,10 +116,11 @@ class RecipeCategoryTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for : indexPath) as! RecipeCategoryTableViewCell
-        cell.recipes = recipeCategoryArr[indexPath.row + indexPath.section]
+        cell.recipes = recipeCategoryArr[indexPath.section]
         if let parent = self.parent as? RecipeHomeViewController{
-            cell.delegate = parent
+            cell.homeDelegate = parent
         }
+        cell.reloadTableData()
         return cell
     }
     

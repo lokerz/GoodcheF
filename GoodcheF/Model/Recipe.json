@@ -4,7 +4,6 @@
     "Name" : "Ayam Kremes",
     "Source" : "Primarasa",
     "Desc" : "Bumbunya sederhana, membuatnya pun mudah, namun rasanya sungguh lezat. Resep Ayam Kremes menggunakan taburan tepung berbumbu yang digoreng kering dan renyah. Karena renyahnya sehingga mudah diremas (dikremes).",
-    "Time" : "90",
     "Portion" : "2",
     "Image" : "AyamKremes",
     "Ingredient" : [
@@ -81,14 +80,14 @@
       [
         "Taruh ayam di atas piring saji, taburi dengan tepung bumbu yang kering dan renyah, hidangkan selagi hangat."
       ]
-    ]
+    ],
+    "Time" : 90
   },
   {
     "Id" : 2,
     "Name" : "Tekwan",
     "Source" : "Primarasa",
     "Desc" : "Tekwan, masakan khas Palembang ini mirip sup bakso dengan banyak isian lainnya, berkuah bening, rasanya segar. Hanya saja bentuk 'bakso' dibuat tidak beraturan.",
-    "Time" : "45",
     "Portion" : "2",
     "Image" : "Tekwan",
     "Ingredient" : [
@@ -96,127 +95,127 @@
         "Name" : "Daging ikan tenggiri, potong kecil-kecil",
         "Amount" : 300,
         "Unit" : "Gram ",
-        "Category" : ""
+        "Category" : "Adonan ikan"
       },
       {
         "Name" : "Putih telur, dkocok lepas",
         "Amount" : 1,
         "Unit" : "Butir",
-        "Category" : ""
+        "Category" : "Adonan ikan"
       },
       {
         "Name" : "Garam",
         "Amount" : 2,
         "Unit" : "Sdt",
-        "Category" : ""
+        "Category" : "Adonan ikan"
       },
       {
         "Name" : "Air es",
         "Amount" : 150,
         "Unit" : "ml",
-        "Category" : ""
+        "Category" : "Adonan ikan"
       },
       {
         "Name" : "Tepung kanji",
         "Amount" : 75,
         "Unit" : "Gram",
-        "Category" : ""
+        "Category" : "Adonan ikan"
       },
       {
-        "Name" : "Air",
+        "Name" : "Air untuk merebus",
         "Amount" : 0,
         "Unit" : "secukupnya",
-        "Category" : "untuk merebus"
+        "Category" : "Adonan ikan"
       },
       {
         "Name" : "Udang",
         "Amount" : 400,
         "Unit" : "Gram",
-        "Category" : ""
+        "Category" : "Kuah"
       },
       {
-        "Name" : "Air\n",
+        "Name" : "Air",
         "Amount" : 1250,
         "Unit" : "ml",
-        "Category" : ""
+        "Category" : "Kuah"
       },
       {
         "Name" : "Minyak goreng",
         "Amount" : 1,
         "Unit" : "Gram",
-        "Category" : ""
+        "Category" : "Kuah"
       },
       {
         "Name" : "Bawang putih, haluskan",
         "Amount" : 5,
         "Unit" : "Siung",
-        "Category" : ""
+        "Category" : "Kuah"
       },
       {
         "Name" : "Jahe, dihaluskan",
         "Amount" : 3,
         "Unit" : "Cm",
-        "Category" : ""
+        "Category" : "Kuah"
       },
       {
         "Name" : "Udang kupas, cincang",
         "Amount" : 150,
         "Unit" : "Gram",
-        "Category" : ""
+        "Category" : "Kuah"
       },
       {
         "Name" : "Merica bubuk",
         "Amount" : 0,
         "Unit" : "1/2 Sdt",
-        "Category" : ""
+        "Category" : "Kuah"
       },
       {
         "Name" : "Garam",
         "Amount" : 2,
         "Unit" : "Sdt",
-        "Category" : ""
+        "Category" : "Kuah"
       },
       {
         "Name" : "Bengkuang kupas, iris bentuk batang korek api",
         "Amount" : 75,
         "Unit" : "Gram",
-        "Category" : ""
+        "Category" : "Pelengkap"
       },
       {
         "Name" : "Jamur kuping kering, rendam air panas hingga mengembang, iris-iris",
         "Amount" : 10,
         "Unit" : "Sdt",
-        "Category" : ""
+        "Category" : "Pelengkap"
       },
       {
         "Name" : "Bunga sedap malam, rendam air panas hingga lunak, buang putiknya, ikat simpul",
         "Amount" : 10,
         "Unit" : "Gram",
-        "Category" : ""
+        "Category" : "Pelengkap"
       },
       {
         "Name" : "Bawang goreng",
         "Amount" : 2,
         "Unit" : "Sdm",
-        "Category" : ""
+        "Category" : "Pelengkap"
       },
       {
         "Name" : "Seledri iris halus",
         "Amount" : 2,
         "Unit" : "Sdm",
-        "Category" : ""
+        "Category" : "Pelengkap"
       },
       {
         "Name" : "Cuka 5%",
         "Amount" : 2,
         "Unit" : "Sdm",
-        "Category" : ""
+        "Category" : "Pelengkap"
       },
       {
         "Name" : "Sambal rebus",
         "Amount" : 0,
         "Unit" : "",
-        "Category" : ""
+        "Category" : "Pelengkap"
       }
     ],
     "Step" : [
@@ -246,7 +245,8 @@
       [
         "Pindahkan masakan ke dalam mangkuk saji, beserta isinya, taburi bawang goreng dan seledri, tambahkan cuka dan sambal sesuai selera. Hidangkan selagi hangat.,"
       ]
-    ]
+    ],
+    "Time" : 45
   },
   {
     "Id" : 3,
@@ -254,7 +254,6 @@
     "Source" : "Primarasa",
     "Desc" : "Tekstur Rolade Daging terasa empuk saat digigit berkat teknik rebus sehingga menu ini cocok juga buat anak-anak. Ukurannya bisa disesuaikan agar mudah dikunyah si kecil.,",
     "Portion" : "2",
-    "Time" : "60",
     "Image" : "RoladeDaging",
     "Ingredient" : [
       {
@@ -290,7 +289,8 @@
       {
         "Name" : "Minyak zaitun",
         "Amount" : 25,
-        "Unit" : "ml"
+        "Unit" : "ml",
+        "Category" : ""
       },
       {
         "Name" : "Kaldu sapi",
@@ -326,49 +326,49 @@
         "Name" : "Daging ayam cincang",
         "Amount" : 150,
         "Unit" : "Gram",
-        "Category" : ""
+        "Category" : "Bahan isi"
       },
       {
         "Name" : "Tepung roti putih",
         "Amount" : 25,
         "Unit" : "Gram",
-        "Category" : ""
+        "Category" : "Bahan isi"
       },
       {
         "Name" : "Telur kecil, kocok",
         "Amount" : 1,
         "Unit" : "Butir",
-        "Category" : ""
+        "Category" : "Bahan isi"
       },
       {
         "Name" : "Bawang bombai, cincang, tumis",
         "Amount" : 50,
         "Unit" : "Gram",
-        "Category" : ""
+        "Category" : "Bahan isi"
       },
       {
         "Name" : "Garam",
         "Amount" : 0,
         "Unit" : "1/2 sdt",
-        "Category" : ""
+        "Category" : "Bahan isi"
       },
       {
         "Name" : "Merica bubuk",
         "Amount" : 0,
         "Unit" : "1/2 sdt",
-        "Category" : ""
+        "Category" : "Bahan isi"
       },
       {
         "Name" : "Telur dadar tipis bentuk persegi (dari 2 butir),",
         "Amount" : 2,
         "Unit" : "Lembar",
-        "Category" : ""
+        "Category" : "Bahan isi"
       },
       {
         "Name" : "Wortel, kupas, rebus utuh",
         "Amount" : 2,
         "Unit" : "Buah",
-        "Category" : ""
+        "Category" : "Bahan isi"
       }
     ],
     "Step" : [
@@ -395,7 +395,8 @@
         "Masak rolade, serta balik seperlunya hingga matang (60 menit) dan kuah daging tinggal sedikit, angkat. ",
         "Setelah hangat, lepaskan tali, prong setebal 1½ cm. Sajian bersama sisa saus."
       ]
-    ]
+    ],
+    "Time" : 60
   },
   {
     "Id" : 4,
@@ -403,7 +404,6 @@
     "Source" : "Primarasa",
     "Desc" : "Kakap Panggang Isi dijamin kaya protein dan zat besi berkat perpaduan ikan dan bayam sebagai isiannya. Siraman saus putih ikut memperkaya rasa. Cocok juga untuk menu anak.",
     "Portion" : "2",
-    "Time" : "60",
     "Image" : "KakapPanggangIsi",
     "Ingredient" : [
       {
@@ -439,7 +439,8 @@
       {
         "Name" : "Pasta tomat",
         "Amount" : 1,
-        "Unit" : "Sdm"
+        "Unit" : "Sdm",
+        "Category" : ""
       },
       {
         "Name" : "Udang kecil, kupas, rebus, untuk taburan\n",
@@ -525,7 +526,8 @@
         "Keluarkan pinggan, taburkan udang kecil rebus di permukaannya.",
         "Panggang kembali selama 5 menit, angkat. Taburi daun bawang, sajikan segera."
       ]
-    ]
+    ],
+    "Time" : 60
   },
   {
     "Id" : 5,
@@ -533,91 +535,133 @@
     "Source" : "Primarasa",
     "Desc" : "Ayam Balut Kacang Tanah alternatif resep untuk mengolah daging ayam. Rasanya unik, daging ayam berpadu sempurna dengan kerenyahan dan gurihnya rasa kacang tanah. Dicocol dengan saus asam manis bertambah lezat rasanya.",
     "Portion" : "2",
-    "Time" : "30",
     "Image" : "AyamBalutKacangTanah",
     "Ingredient" : [
       {
-        "Name" : "Tepung Terigu",
-        "Amount" : 75,
+        "Name" : "Sayap ayam\n ",
+        "Amount" : 500,
         "Unit" : "Gram",
         "Category" : ""
+      },
+      {
+        "Name" : "Air jeruk nipis\n",
+        "Amount" : 2,
+        "Unit" : "Sdm",
+        "Category" : ""
+      },
+      {
+        "Name" : "Bawang putih, parut.",
+        "Amount" : 5,
+        "Unit" : "Siung",
+        "Category" : ""
+      },
+      {
+        "Name" : "Jahe, parut.",
+        "Amount" : 3,
+        "Unit" : "cm",
+        "Category" : ""
+      },
+      {
+        "Name" : "Merica bubuk ",
+        "Amount" : 0,
+        "Unit" : "1/2 Sdt",
+        "Category" : ""
+      },
+      {
+        "Name" : "Garam\n\n ",
+        "Amount" : 1,
+        "Unit" : "Sdt",
+        "Category" : ""
+      },
+      {
+        "Name" : "Minyak goreng",
+        "Amount" : 0,
+        "Unit" : "",
+        "Category" : ""
+      },
+      {
+        "Name" : "Tepung terigu",
+        "Amount" : 75,
+        "Unit" : "Gram",
+        "Category" : "Lapisan"
       },
       {
         "Name" : "Merica bubuk",
         "Amount" : 0,
         "Unit" : "1/2 sdt",
-        "Category" : ""
+        "Category" : "Lapisan"
       },
       {
         "Name" : "Garam",
         "Amount" : 1,
-        "Unit" : "sdt",
-        "Category" : ""
+        "Unit" : "Sdt",
+        "Category" : "Lapisan"
       },
       {
-        "Name" : "Telur kocok lepas",
+        "Name" : "Telur, kocok lepas.",
         "Amount" : 2,
         "Unit" : "Butir",
-        "Category" : ""
+        "Category" : "Lapisan"
       },
       {
         "Name" : "Kacang tanah, kupas, cincang halus.",
         "Amount" : 100,
         "Unit" : "Gram",
-        "Category" : ""
+        "Category" : "Lapisan"
       },
       {
-        "Name" : "Bawang bombai, iris melintang tipis.",
+        "Name" : "Bawang bombai, iris melintang tipis.\n",
         "Amount" : 50,
-        "Unit" : "Gram"
+        "Unit" : "Gram",
+        "Category" : "Saus"
       },
       {
         "Name" : "Bawang putih, cincang.",
         "Amount" : 2,
         "Unit" : "Siung",
-        "Category" : ""
+        "Category" : "Saus"
       },
       {
         "Name" : "Jahe, cincang.",
         "Amount" : 2,
         "Unit" : "cm",
-        "Category" : ""
+        "Category" : "Saus"
       },
       {
         "Name" : "Gula pasir",
         "Amount" : 1,
-        "Unit" : "sdt",
-        "Category" : ""
+        "Unit" : "Sdt",
+        "Category" : "Saus"
       },
       {
         "Name" : "Kecap inggris",
         "Amount" : 2,
         "Unit" : "Sdm",
-        "Category" : ""
+        "Category" : "Saus"
       },
       {
-        "Name" : "Saus tomat.",
+        "Name" : "Saus tomat",
         "Amount" : 2,
         "Unit" : "Sdm",
-        "Category" : ""
+        "Category" : "Saus"
       },
       {
         "Name" : "Kaldu ayam",
         "Amount" : 50,
         "Unit" : "ml",
-        "Category" : ""
+        "Category" : "Saus"
       },
       {
-        "Name" : "Merica Bubuk",
+        "Name" : "Merica bubuk",
         "Amount" : 0,
-        "Unit" : "1/2 sdt",
-        "Category" : ""
+        "Unit" : "1/2 Sdt",
+        "Category" : "Saus"
       },
       {
         "Name" : "Garam",
         "Amount" : 0,
-        "Unit" : "1/4 sdt",
-        "Category" : ""
+        "Unit" : "1/4 Sdt",
+        "Category" : "Saus"
       }
     ],
     "Step" : [
@@ -643,15 +687,15 @@
         "Tambahkan garam, aduk hingga mendidih dan kuah mengental.",
         "Sajikan sayap ayam goreng dengan saus selagi hangat."
       ]
-    ]
+    ],
+    "Time" : 30
   },
   {
     "Id" : 6,
     "Name" : "Kue Putu Tanpa Oven",
     "Source" : "Blueband",
-    "Desc" : "Saat ini sudah semakin sulit menemukan penjual kue putu. Tapi sekarang Ibu bisa membuatnya sendiri dirumah dengan resep kue putu dari Blueband. Resepnya mudah diikuti karena tanpa menggunakan oven. Sajikan putu cake untuk cemilan sambil berkumpul bersama keluarga. Baca resep selengkapnya dibawah ini!",
+    "Desc" : "Saat ini sudah semakin sulit menemukan penjual sue putu. Tapi sekarang Ibu bisa membuatnya sendiri dirumah dengan resep kue putu dari Blueband. Resepnya mudah diikuti karena tanpa menggunakan oven. Sajikan putu cake untuk cemilan sambil berkumpul bersama keluarga. Baca resep selengkapnya dibawah ini!",
     "Portion" : "2",
-    "Time" : "60",
     "Image" : "KuePutuTanpaOven",
     "Ingredient" : [
       {
@@ -661,105 +705,476 @@
         "Category" : ""
       },
       {
-        "Name" : "Merica bubuk",
-        "Amount" : 0,
-        "Unit" : "1/2 sdt",
-        "Category" : ""
-      },
-      {
-        "Name" : "Garam",
-        "Amount" : 1,
-        "Unit" : "sdt",
-        "Category" : ""
-      },
-      {
-        "Name" : "Telur kocok lepas",
-        "Amount" : 2,
-        "Unit" : "Butir",
-        "Category" : ""
-      },
-      {
-        "Name" : "Kacang tanah, kupas, cincang halus.",
+        "Name" : "Gula pasir",
         "Amount" : 100,
         "Unit" : "Gram",
         "Category" : ""
       },
       {
-        "Name" : "Bawang bombai, iris melintang tipis.",
-        "Amount" : 50,
-        "Unit" : "Gram"
+        "Name" : "Tepung terigu",
+        "Amount" : 100,
+        "Unit" : "Gram",
+        "Category" : ""
       },
       {
-        "Name" : "Bawang putih, cincang.",
+        "Name" : "Ovalet/SP",
         "Amount" : 2,
-        "Unit" : "Siung",
+        "Unit" : "Sdt",
         "Category" : ""
       },
       {
-        "Name" : "Jahe, cincang.",
-        "Amount" : 2,
-        "Unit" : "cm",
+        "Name" : "Baking powder",
+        "Amount" : 250,
+        "Unit" : "Sdt",
         "Category" : ""
       },
       {
-        "Name" : "Gula pasir",
-        "Amount" : 1,
-        "Unit" : "sdt",
-        "Category" : ""
-      },
-      {
-        "Name" : "Kecap inggris",
-        "Amount" : 2,
-        "Unit" : "Sdm",
-        "Category" : ""
-      },
-      {
-        "Name" : "Saus tomat.",
-        "Amount" : 2,
-        "Unit" : "Sdm",
-        "Category" : ""
-      },
-      {
-        "Name" : "Kaldu ayam",
-        "Amount" : 50,
+        "Name" : "Susu",
+        "Amount" : 40,
         "Unit" : "ml",
         "Category" : ""
       },
       {
-        "Name" : "Merica Bubuk",
-        "Amount" : 0,
-        "Unit" : "1/2 sdt",
+        "Name" : "Blue Band Cake and Cookie, lelehkan ",
+        "Amount" : 40,
+        "Unit" : "ml",
         "Category" : ""
       },
       {
-        "Name" : "Garam",
-        "Amount" : 0,
-        "Unit" : "1/4 sdt",
+        "Name" : "Esens pandan",
+        "Amount" : 2,
+        "Unit" : "sdt",
+        "Category" : ""
+      },
+      {
+        "Name" : "Gula merah sisir (haluskan menjadi bubuk kasar) ",
+        "Amount" : 200,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Kelapa parut untuk taburan",
+        "Amount" : 75,
+        "Unit" : "Gram",
         "Category" : ""
       }
     ],
     "Step" : [
       [
-        "Potong masing-masing sayap ayam menjadi 2 bagian, buang bagian ujungnya yang kecil. "
+        "Panaskan panci kukusan dengan api sedang"
       ],
       [
-        "Campur air jeruk nipis, bawang putih parut, jahe parut, merica dan garam dalam mangkuk, aduk rata.",
-        "Lumuri sayap ayam dengan campuran air jeruk, diamkan selama ± 30 menit atau lebih agar bumbu meresap."
+        "Campurkan gula, ovalet/sp, telur, esens pandan di mangkuk sedang.",
+        "Aduk sampai mengembang kurang lebih 8-9 menit"
       ],
       [
-        "Panaskan minyak goreng yang banyak dalam wajan/panci deep fry di atas api sedang.",
-        "Campur tepung terigu, merica dan garam hingga rata. Lumuri ayam dengan campuran tepung. ",
-        "Lumuri ayam dengan campuran tepung. Celupkan sayap ayam ke dalam telur kocok satu persatu, kemudian gulingkan di atas kacang cincang hingga seluruh bagian sayap terbalut kacang. "
+        "Tambahkan tepung terigu yang sudah diayak, baking powder, dan susu. Aduk kembali."
       ],
       [
-        "Segera masukkan sayap ayam balut kacang ke dalam minyak panas",
-        "Goreng hingga matang dan renyah, angkat, tiriskan. "
+        "Lelehkan Blue Band Cake and Cookie, Masukkan Blue Band Cake and Cookie cair ke dalam adonan kue, Aduk rata."
       ],
       [
-        "Panaskan minyak goeng dalam wajan, tumis bawang bombai, bawang putih dan jahe hingga harum.",
-        "Masukkan gula pasir, kecap inggris, saus tomat, kaldu ayam dan merica. ",
-        "Tambahkan garam, aduk hingga mendidih dan kuah mengental.",
-        "Sajikan sayap ayam goreng dengan saus selagi hangat."
+        "Oleskan loyang berdiameter 18 cm dengan Blue Band Cake and Cookie. Tuangkan adonan ke dalam loyang."
+      ],
+      [
+        "Kukus selama kurang lebih 30 menit hingga matang."
+      ],
+      [
+        "Angkat kue dari kukusan. Diamkan selama 5 menit lalu belah tengah kue secara melintang menjadi dua bagian."
+      ],
+      [
+        "Tambahkan gula merah yang sudah dihancurkan ke bagian tengah kue."
+      ],
+      [
+        "Kukus kembali selama 5 menit"
+      ],
+      [
+        "Angkat kue dari kukusan lalu beri taburan kelapa parut.\n"
+      ]
+    ],
+    "Time" : 60
+  },
+  {
+    "Id" : 7,
+    "Name" : "Bakwan Kembang Kol",
+    "Source" : "Blueband",
+    "Desc" : "Ibu tahu tidak? Bakwan goreng juga bisa dibuat jadi sarapan bernutrisi untuk Si Kecil loh. Penasaran? Langsung saja lihat resep Bakwan Kembang Kol di sini!",
+    "Portion" : "2",
+    "Image" : "BakwanKembangKol",
+    "Ingredient" : [
+      {
+        "Name" : "Kembang kol, parut kasar.",
+        "Amount" : 250,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Kentang, kupas, parut kasar, tiriskan airnya.",
+        "Amount" : 250,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Bawang bombay cincang.",
+        "Amount" : 1,
+        "Unit" : "Buah",
+        "Category" : ""
+      },
+      {
+        "Name" : "Telur ayam",
+        "Amount" : 3,
+        "Unit" : "Butir",
+        "Category" : ""
+      },
+      {
+        "Name" : "Tepung terigu serbaguna",
+        "Amount" : 8,
+        "Unit" : "Sdm",
+        "Category" : ""
+      },
+      {
+        "Name" : "Daun kucai, cincang halus.",
+        "Amount" : 2,
+        "Unit" : "Sdm",
+        "Category" : ""
+      },
+      {
+        "Name" : "Garam",
+        "Amount" : 1,
+        "Unit" : "Sdt",
+        "Category" : ""
+      },
+      {
+        "Name" : "Merica putih bubuk.",
+        "Amount" : 1,
+        "Unit" : "Sdt",
+        "Category" : ""
+      },
+      {
+        "Name" : "Blue Band Serba guna",
+        "Amount" : 1,
+        "Unit" : "Sdm",
+        "Category" : ""
+      },
+      {
+        "Name" : "Saus tomat atau saus sambal botolan, untuk cocolan.",
+        "Amount" : 0,
+        "Unit" : "",
+        "Category" : ""
+      }
+    ],
+    "Step" : [
+      [
+        "Di dalam mangkuk, masukkan kembang kol, kentang, dan bawang bombay. Aduk rata.",
+        "Masukkan telur, terigu, kucai, garam, dan merica. Aduk rata."
+      ],
+      [
+        "Panaskan Blue Band Serba Guna di dalam wajan di atas api sedang.",
+        "Masukkan 2 sdm adonan kembang kol. Masak hingga matang dan berwarna kecokelatan. Angkat, tiriskan."
+      ],
+      [
+        "Ulangi proses hingga adonan habis."
+      ],
+      [
+        "Tata Bakwan Kembang Kol di atas pairing saji. Sajikan disertai saus tomat atau saus sambal untuk cocolan."
+      ]
+    ],
+    "Time" : 60
+  },
+  {
+    "Id" : 8,
+    "Name" : "Rolade Tahu",
+    "Source" : "Blueband",
+    "Desc" : "Bosan membuat sarapan yang itu-itu saja? Mari mencoba membuat rolade tahu sayur yang lezat dan kaya gizi untuk sajian nikmat di pagi hari.",
+    "Portion" : "2",
+    "Time" : 90,
+    "Image" : "RoladeTahu",
+    "Ingredient" : [
+      {
+        "Name" : "Tahu putih yang sudah dihaluskan.",
+        "Amount" : 3,
+        "Unit" : "Kotak",
+        "Category" : ""
+      },
+      {
+        "Name" : "Daging ayam yang sudah dicincang halus.",
+        "Amount" : 300,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Wortel berukuran sedang, kupas dan potong berbentuk d.",
+        "Amount" : 1,
+        "Unit" : "Buah",
+        "Category" : ""
+      },
+      {
+        "Name" : "Buncis yang sudah diiris tipis.",
+        "Amount" : 4,
+        "Unit" : "Buah",
+        "Category" : ""
+      },
+      {
+        "Name" : "Bawang putih yang sudah dihaluskan.",
+        "Amount" : 4,
+        "Unit" : "Siung",
+        "Category" : ""
+      },
+      {
+        "Name" : "Daun bawang yang sudah diiris tipis.",
+        "Amount" : 2,
+        "Unit" : "Batang",
+        "Category" : ""
+      },
+      {
+        "Name" : "Telur ayam",
+        "Amount" : 2,
+        "Unit" : "Butir",
+        "Category" : ""
+      },
+      {
+        "Name" : "Garam dan merica bubuk.",
+        "Amount" : 0,
+        "Unit" : "Secukupnya",
+        "Category" : ""
+      },
+      {
+        "Name" : "Margarin Blue Band Serbaguna\n",
+        "Amount" : 3,
+        "Unit" : "Sdm",
+        "Category" : ""
+      }
+    ],
+    "Step" : [
+      [
+        "Kocok telur dan campurkan dengan garam dan merica bubuk sesuai selera hingga tekstur telur mengembang."
+      ],
+      [
+        "Panaskan 1 sdm margarin Blue Band Serbaguna pada wajan anti lengket, lalu tuangkan adonan telur yang sudah dikocok."
+      ],
+      [
+        "Masak adonan telur hingga matang dan menjadi telur dadar dan angkat telur dadar yang sudah matang lalu sisihkan sejenak."
+      ],
+      [
+        "Panaskan 2 sdm margarin Blue Band Serbaguna untuk menumis bawang putih hingga matang dan harum."
+      ],
+      [
+        "Setelah bawang putih mulai matang, segera masukkan ayam cincang, lalu masak ayam dengan api kecil hingga matang sempurna."
+      ],
+      [
+        "Bila ayam cincang sudah matang, masukkan potongan telur, daun bawang, buncis, dan tahu."
+      ],
+      [
+        "Jangan lupa menambahkan garam dan merica bubuk secukupnya, lalu masak sebentar hingga semua bahan tercampur rata dan matang, kemudian diamkan sejenak agar uap panasnya hilang."
+      ],
+      [
+        "Letakkan telur dadar pada aluminium foil, isi dengan adonan tahu dan ayam cincang yang sudah dimasak, dan gulung perlahan-lahan sampai padat."
+      ],
+      [
+        "Kukus adonan rolade tahu sayur yang sudah dibungkus aluminium foil sampai matang, dan sajikan."
+      ]
+    ]
+  },
+  {
+    "Id" : 9,
+    "Name" : "Nasi Goreng Ayam Mozarella",
+    "Source" : "Blueband",
+    "Desc" : "",
+    "Portion" : "2",
+    "Time" : 30,
+    "Image" : "NasiGorengAyamMozarella",
+    "Ingredient" : [
+      {
+        "Name" : "Daging ayam tanpa tulang matang (dipotong dadu).\n",
+        "Amount" : 50,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Bawang bombai (dirajang dadu).",
+        "Amount" : 50,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Bawang putih (dirajang halus).",
+        "Amount" : 10,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Wortel (dipotong dadu kecil).",
+        "Amount" : 30,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Kacang polong",
+        "Amount" : 40,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Nasi putih",
+        "Amount" : 150,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Daun bawang (dirajang tipis).",
+        "Amount" : 15,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Blue Band Serbaguna",
+        "Amount" : 15,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Kecap asin",
+        "Amount" : 22,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Garam",
+        "Amount" : 0,
+        "Unit" : "Secukupnya",
+        "Category" : ""
+      },
+      {
+        "Name" : "Keju mozzarella",
+        "Amount" : 50,
+        "Unit" : "Gram",
+        "Category" : ""
+      }
+    ],
+    "Step" : [
+      [
+        "Panaskan wajan, masukkan Blue Band Serbaguna lalu lelehkan."
+      ],
+      [
+        "Masukkan bawang bombai, wortel, kacang oolong, lalu tumis hingga matang."
+      ],
+      [
+        "Tambahkan bawang putih lalu tumis sebentar kemudian masukkan daging ayam."
+      ],
+      [
+        "Lalu tambahkan nasi putih kemudian masak hingga matang."
+      ],
+      [
+        "Tambahkan garam dan kecap asin kemudian aduk hingga rata."
+      ],
+      [
+        "Pindahkan nasi goreng ke piring lalu taburkan keju diatas nasi goreng kemudian lelehkan keju dengan blow torch atau masukkan ke dalam oven api atas hingga kejunya meleleh. Jika tidak ada torch dan oven, Nasi Goreng ayam Mozzarella bisa dipanaskan di atas pan yang ditutup."
+      ],
+      [
+        "Taburkan daun bawang diatas nasi goreng dan sajikan."
+      ]
+    ]
+  },
+  {
+    "Id" : 10,
+    "Name" : "Sweet Potato Scramble Nikmat",
+    "Source" : "Blueband",
+    "Desc" : "",
+    "Portion" : "2",
+    "Time" : 30,
+    "Image" : "SweetPotatoScrambleNikmat",
+    "Ingredient" : [
+      {
+        "Name" : "Ubi kuning berukuran besar, kupas dan potong berbentuk.",
+        "Amount" : 1,
+        "Unit" : "Buah",
+        "Category" : ""
+      },
+      {
+        "Name" : "Telur ayam",
+        "Amount" : 2,
+        "Unit" : "Butir",
+        "Category" : ""
+      },
+      {
+        "Name" : "Paprika merah",
+        "Amount" : 0,
+        "Unit" : "1/2 buah",
+        "Category" : ""
+      },
+      {
+        "Name" : "Bawang bombay yang sudah diiris tipis.",
+        "Amount" : 0,
+        "Unit" : "1/2 buah",
+        "Category" : ""
+      },
+      {
+        "Name" : "Daun bawang yang sudah diiris tipis.",
+        "Amount" : 1,
+        "Unit" : "Batang",
+        "Category" : ""
+      },
+      {
+        "Name" : "Bawang putih yang sudah diiris.",
+        "Amount" : 2,
+        "Unit" : "Siung",
+        "Category" : ""
+      },
+      {
+        "Name" : "Daun bayam, petiki daunnya lalu cuci bersih.",
+        "Amount" : 3,
+        "Unit" : "Sdm",
+        "Category" : ""
+      },
+      {
+        "Name" : "Minyak zaitun",
+        "Amount" : 1,
+        "Unit" : "Sdm",
+        "Category" : ""
+      },
+      {
+        "Name" : "Garam dan merica bubuk",
+        "Amount" : 0,
+        "Unit" : "Secukupnya",
+        "Category" : ""
+      },
+      {
+        "Name" : "Keju mozzarella parut.",
+        "Amount" : 0,
+        "Unit" : "Secukupnya",
+        "Category" : ""
+      }
+    ],
+    "Step" : [
+      [
+        "Rendam ubi yang sudah dipotong berbentuk dadu dalam air, kemudian tabur sedikit garam dan aduk hingga merata."
+      ],
+      [
+        "Panaskan 2 sdm margarin Blue Band Serbaguna dan minyak zaitun, lalu masak ubi dengan api kecil."
+      ],
+      [
+        "Setelah ubi mulai matang, masukkan irisan bawang bombay dan masak kembali hingga bawang bombay matang."
+      ],
+      [
+        "Sambil menunggu ubi dan bawang bombay matang, Anda bisa mulai mengocok telur ayam dengan sedikit garam dan merica."
+      ],
+      [
+        "Panaskan 1 sdm margarin Blue Band Serbaguna pada wajan lain kemudian tumis irisan bawang putih sampai harum."
+      ],
+      [
+        "Campur telur yang sudah dikocok lepas dengan bawang putih, lalu masak sebentar sampai telur mulai matang."
+      ],
+      [
+        "Masukkan paprika merah yang sudah diiris ke dalam telur yang sudah matang."
+      ],
+      [
+        "Sesaat sebelum mengangkat telur, masukkan daun bayam, daun bawang, dan keju mozzarella parut, dan masak kembali sambil terus diaduk sampai semua bahan tercampur rata."
+      ],
+      [
+        "Tuang ubi dan bawang bombay yang sudah matang ke piring saji, lalu tambahkan telur yang sudah matang sebagai topping-nya."
+      ],
+      [
+        "Sweet Potato Scramble buatan Anda sudah jadi dan siap disajikan."
       ]
     ]
   }

@@ -20,6 +20,8 @@ class RecipeEachViewController: UIViewController {
     
     var recipe : Recipe?
     var isFavorite = false
+    var categoryArr = [String]()
+    var ingredientArr = [[Ingredient]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +35,8 @@ class RecipeEachViewController: UIViewController {
         setupNavBar()
         askIfFavorite()
         setHeight()
-
-        print(recipe?.Ingredient?.count)
-        print(recipe?.Step.count)
-
-
-        // Do any additional setup after loading the view.
+        ingredientCategorize()
+        
     }
     
     func setupNavBar(){
@@ -55,6 +53,34 @@ class RecipeEachViewController: UIViewController {
                 break
             }
         }
+    }
+    
+    func ingredientCategorize(){
+        var categoryExist = false
+        
+        for ingredient in recipe!.Ingredient {
+            for category in categoryArr{
+                if ingredient.Category == category{
+                    categoryExist = true
+                }
+                else {
+                    categoryExist = false
+                }
+            }
+            if !categoryExist {
+                categoryArr.append(ingredient.Category)
+            }
+        }
+        for i in 0...categoryArr.count - 1 {
+            var tempArr = [Ingredient]()
+            for ingredient in recipe!.Ingredient {
+                if ingredient.Category == categoryArr[i] {
+                    tempArr.append(ingredient)
+                }
+            }
+            ingredientArr.append(tempArr)
+        }
+        print( ingredientArr)
     }
     
     @IBAction func favButtonAction(_ sender: UIButton) {
@@ -84,12 +110,13 @@ class RecipeEachViewController: UIViewController {
     }
     
     
+    
 }
 extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource {
     func setHeight(){
         for constraint in ingredientTableView.constraints {
             if constraint.identifier == "ingredientTableHeight"{
-                constraint.constant = CGFloat(44 * ((recipe?.Ingredient?.count)! + ingredientTableView.numberOfSections))
+                constraint.constant = CGFloat(45 * ((recipe?.Ingredient.count)! + ingredientTableView.numberOfSections))
             }
         }
         for constraint in stepTableView.constraints {
@@ -104,7 +131,7 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == ingredientTableView{
-            return 2
+            return categoryArr.count
         }
         else{
             return 1
@@ -113,11 +140,11 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if tableView == ingredientTableView{
-            if section == 0{
-                return "Bahan Memasak "
+            if section == 0 {
+                return "Bahan Memasak"
             }
-            else {
-                return "Bumbu Halus"
+            else{
+                return categoryArr[section]
             }
         }
         else{
@@ -135,7 +162,7 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == ingredientTableView {
-            return (recipe?.Ingredient?.count)!
+            return ingredientArr[section].count
         }
         else {
             return (recipe?.Step.count)!
@@ -145,16 +172,24 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ingredientTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        if tableView == ingredientTableView {
-            
+        if let recipe = recipe{
+            if tableView == ingredientTableView {
+                if ingredientArr[indexPath.section][indexPath.row].Amount > 0{
+                cell.textLabel?.text = "\(ingredientArr[indexPath.section][indexPath.row].Amount) \(ingredientArr[indexPath.section][indexPath.row].Unit ?? "") \(ingredientArr[indexPath.section][indexPath.row].Name)"
+                }
+                else {
+                    cell.textLabel?.text = "\(ingredientArr[indexPath.section][indexPath.row].Unit ?? "") \(ingredientArr[indexPath.section][indexPath.row].Name)"
+                }
+            }
+            else {
+                cell.textLabel?.text = "\(indexPath.row + 1). "
+                for step in recipe.Step[indexPath.row]{
+                    if let str = step as String?{
+                        cell.textLabel?.text = cell.textLabel!.text! + "\(str) "
+                    }
+                }
+            }
         }
-        else {
-            
-        }
-        
-        
-        
         return cell
     }
 

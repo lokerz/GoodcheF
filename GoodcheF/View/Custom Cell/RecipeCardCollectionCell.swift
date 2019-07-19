@@ -34,5 +34,9 @@ class RecipeCardCollectionCell: UICollectionViewCell {
         titleOutlet.text = title
         subtitleOutlet.text = subtitle
     }
+    
+    override func prepareForReuse() {
+        
+    }
 
 }

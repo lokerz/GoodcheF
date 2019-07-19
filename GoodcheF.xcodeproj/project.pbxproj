@@ -16,7 +16,6 @@
 		47601B0622CA050800ED158B /* RecipeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47601B0522CA050800ED158B /* RecipeHomeViewController.swift */; };
 		47601B0822CA053D00ED158B /* RecipeEachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47601B0722CA053D00ED158B /* RecipeEachViewController.swift */; };
 		47601B0C22CA055A00ED158B /* RecipeLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47601B0B22CA055A00ED158B /* RecipeLiveViewController.swift */; };
-		4772EEF422E04FFC00B3959C /* Recipe.sjson in Resources */ = {isa = PBXBuildFile; fileRef = 4772EEF322E04FFC00B3959C /* Recipe.sjson */; };
 		47742A3A22D71FA0003AD966 /* RecipeCardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47742A3822D71FA0003AD966 /* RecipeCardCollectionCell.swift */; };
 		47742A3B22D71FA0003AD966 /* RecipeCardCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47742A3922D71FA0003AD966 /* RecipeCardCollectionCell.xib */; };
 		47742A3E22D73579003AD966 /* RecipeCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47742A3D22D73579003AD966 /* RecipeCategoryTableViewCell.swift */; };
@@ -42,7 +41,6 @@
 		47601B0522CA050800ED158B /* RecipeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeHomeViewController.swift; sourceTree = "<group>"; };
 		47601B0722CA053D00ED158B /* RecipeEachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeEachViewController.swift; sourceTree = "<group>"; };
 		47601B0B22CA055A00ED158B /* RecipeLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeLiveViewController.swift; sourceTree = "<group>"; };
-		4772EEF322E04FFC00B3959C /* Recipe.sjson */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Recipe.sjson; sourceTree = "<group>"; };
 		47742A3822D71FA0003AD966 /* RecipeCardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardCollectionCell.swift; sourceTree = "<group>"; };
 		47742A3922D71FA0003AD966 /* RecipeCardCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCardCollectionCell.xib; sourceTree = "<group>"; };
 		47742A3D22D73579003AD966 /* RecipeCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 		47601AFA22CA041200ED158B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4772EEF322E04FFC00B3959C /* Recipe.sjson */,
 				4782D62122DDF3C300C31A0B /* Recipe.json */,
 				47601AFB22CA043F00ED158B /* DataManager.swift */,
 				47601AE922C9F65000ED158B /* GoodcheF.xcdatamodeld */,
@@ -238,7 +235,6 @@
 				47601AED22C9F65100ED158B /* Assets.xcassets in Resources */,
 				47601AE822C9F65000ED158B /* Main.storyboard in Resources */,
 				4782D62222DDF3C300C31A0B /* Recipe.json in Resources */,
-				4772EEF422E04FFC00B3959C /* Recipe.sjson in Resources */,
 				4788652D22DC907300F62789 /* RecipeCardTableCell.xib in Resources */,
 				47742A3B22D71FA0003AD966 /* RecipeCardCollectionCell.xib in Resources */,
 			);

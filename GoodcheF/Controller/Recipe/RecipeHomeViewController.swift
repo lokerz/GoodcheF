@@ -35,10 +35,10 @@ class RecipeHomeViewController: UIViewController, HomeDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryViewController.view.isHidden = false
-        listViewController.view.isHidden = false
-        UIView.animate(withDuration: 0) {
-            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: -1000)
-        }
+        listViewController.view.isHidden = true
+//        UIView.animate(withDuration: 0) {
+//            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: -1000)
+//        }
         setupNavBar()
     }
     
@@ -84,7 +84,7 @@ extension RecipeHomeViewController :  UISearchBarDelegate, UISearchResultsUpdati
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         listViewController.filteredRecipes = listViewController.recipes.filter({( recipe : Recipe) -> Bool in
-            return recipe.Name!.lowercased().contains(searchText.lowercased())
+            return recipe.Name.lowercased().contains(searchText.lowercased())
         })
         listViewController.tableView.reloadData()
     }
@@ -102,16 +102,20 @@ extension RecipeHomeViewController :  UISearchBarDelegate, UISearchResultsUpdati
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        UIView.animate(withDuration: 1) {
-            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: 0)
-        }
+        listViewController.view.isHidden = false
+
+//        UIView.animate(withDuration: 1) {
+//            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: 0)
+//        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        UIView.animate(withDuration: 1) {
-            self.listViewController.tableView.setContentOffset(.zero, animated: false)
-            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: -1000)
-        }
+        listViewController.view.isHidden = true
+
+//        UIView.animate(withDuration: 1) {
+//            self.listViewController.tableView.setContentOffset(.zero, animated: false)
+//            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: -1000)
+//        }
     }
 }
 
