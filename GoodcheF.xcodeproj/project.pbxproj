@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C2BFFD422E071E9005F7E18 /* AllergenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2BFFD322E071E9005F7E18 /* AllergenCell.swift */; };
 		47601AE322C9F65000ED158B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47601AE222C9F65000ED158B /* AppDelegate.swift */; };
 		47601AE822C9F65000ED158B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47601AE622C9F65000ED158B /* Main.storyboard */; };
 		47601AEB22C9F65000ED158B /* GoodcheF.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47601AE922C9F65000ED158B /* GoodcheF.xcdatamodeld */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C2BFFD322E071E9005F7E18 /* AllergenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergenCell.swift; sourceTree = "<group>"; };
 		47601ADF22C9F65000ED158B /* GoodcheF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodcheF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47601AE222C9F65000ED158B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47601AE722C9F65000ED158B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				477C24C822D49F5400B8F446 /* OnboardingViewController.swift */,
+				1C2BFFD322E071E9005F7E18 /* AllergenCell.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				47601B0622CA050800ED158B /* RecipeHomeViewController.swift in Sources */,
 				477C24C922D49F5400B8F446 /* OnboardingViewController.swift in Sources */,
 				47742A3A22D71FA0003AD966 /* RecipeCardCollectionCell.swift in Sources */,
+				1C2BFFD422E071E9005F7E18 /* AllergenCell.swift in Sources */,
 				47601B0822CA053D00ED158B /* RecipeEachViewController.swift in Sources */,
 				4778A34B22D5C75F00411A37 /* DummyDataModel.swift in Sources */,
 				4788652C22DC907300F62789 /* RecipeCardTableCell.swift in Sources */,
