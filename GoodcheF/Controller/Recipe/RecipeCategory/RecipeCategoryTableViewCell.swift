@@ -46,9 +46,12 @@ extension RecipeCategoryTableViewCell : UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCardCollectionCell", for : indexPath) as! RecipeCardCollectionCell
-        cell.backgroundColor = .green
         cell.titleOutlet.text = recipes[indexPath.row].Name
-        cell.subtitleOutlet.text = String( recipes[indexPath.row].Time)
+        cell.subtitleOutlet.text = "Porsi \(recipes[indexPath.row].Portion ?? "1") Orang, \(recipes[indexPath.row].Time) Menit"
+        let img = UIImage(named: recipes[indexPath.row].Image!)!
+        let imageData = img.highQuality
+        cell.imageOutlet.image = UIImage(data: imageData as Data)
+        cell.setCell()
         return cell
     }
     
@@ -56,6 +59,15 @@ extension RecipeCategoryTableViewCell : UICollectionViewDelegate, UICollectionVi
         let recipe : Recipe
         recipe = recipes[indexPath.row]
         self.homeDelegate?.recipeOpen(recipe)
+      
     }
-    
+}
+
+extension UIImage
+{
+    var highestQuality: NSData { return jpegData(compressionQuality: 1)! as NSData }
+    var highQuality: NSData { return jpegData(compressionQuality: 0.75)! as NSData }
+    var midQuality: NSData { return jpegData(compressionQuality: 0.5)! as NSData }
+    var lowQuality: NSData { return jpegData(compressionQuality: 0.25)! as NSData }
+    var lowestQuality: NSData { return jpegData(compressionQuality: 0)! as NSData }
 }

@@ -20,7 +20,6 @@ let context = (UIApplication.shared.delegate as! AppDelegate).persistentContaine
     }
     func getCheckmark() -> String{
         let checkedMark = "000000"
-        
         return checkedMark
     }
     

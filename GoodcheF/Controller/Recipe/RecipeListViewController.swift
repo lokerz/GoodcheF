@@ -54,7 +54,15 @@ class RecipeListViewController: UITableViewController {
             recipe = recipes[indexPath.row]
         }
         cell.titleOutlet.text = recipe.Name
+        cell.subtitleOutlet.text = "Porsi \(recipes[indexPath.row].Portion ?? "1") Orang, \(recipes[indexPath.row].Time) Menit"
         cell.selectionStyle = .none
+        
+        let img = UIImage(named: recipe.Image!)!
+        let imageData = img.highQuality
+        cell.imageOutlet.image = UIImage(data: imageData as Data)
+        
+        cell.setCell()
+        
         return cell
     }
     

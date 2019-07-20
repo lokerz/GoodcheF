@@ -26,6 +26,7 @@ class RecipeCategoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = .white
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -110,9 +111,23 @@ class RecipeCategoryTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
-        header.textLabel?.textColor = .black
-        header.backgroundView?.backgroundColor = .white
+        header.textLabel?.font = .systemFont(ofSize: 19, weight: .semibold)
+        header.textLabel?.textColor = #colorLiteral(red: 0.296022743, green: 0.03586935252, blue: 0.01109559834, alpha: 1)
+        header.textLabel?.text = categoryArr[section].capitalized
+        header.backgroundView?.backgroundColor = .clear
+    }
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        let footer = view as! UITableViewHeaderFooterView
+        footer.backgroundView?.backgroundColor = .clear
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 220
+    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 29
+    }
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 32
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for : indexPath) as! RecipeCategoryTableViewCell
@@ -120,7 +135,10 @@ class RecipeCategoryTableViewController: UITableViewController {
         if let parent = self.parent as? RecipeHomeViewController{
             cell.homeDelegate = parent
         }
+        cell.backgroundView?.backgroundColor = .white
         cell.reloadTableData()
+        cell.clipsToBounds = false
+        cell.layer.masksToBounds = false
         return cell
     }
     

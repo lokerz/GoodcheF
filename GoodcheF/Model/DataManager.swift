@@ -17,6 +17,7 @@ struct Recipe : Decodable{
     let Desc : String?
     let Time : Int
     let Image : String?
+    let Portion : String?
     var Ingredient : [Ingredient]
     var Step : [[String]]
 }
@@ -93,7 +94,7 @@ class DataManager : NSObject{
     
     func filterRecipes(){
         print(#function)
-        allergenVal = "001000"
+        allergenVal = "000000"
         if Array(allergenVal!)[0] == "1"{
             filterGluten()
         }

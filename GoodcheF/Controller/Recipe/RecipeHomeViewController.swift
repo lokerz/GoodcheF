@@ -41,7 +41,9 @@ class RecipeHomeViewController: UIViewController, HomeDelegate {
 //        }
         setupNavBar()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRecipeSegue" {
             let vc = segue.destination as! RecipeEachViewController
@@ -50,20 +52,25 @@ class RecipeHomeViewController: UIViewController, HomeDelegate {
     }
     
     func recipeOpen(_ recipe : Recipe){
-        print("called")
         recipeToOpen = recipe
         performSegue(withIdentifier: "ShowRecipeSegue", sender: self)
     }
     
     func setupNavBar(){
+        let color = #colorLiteral(red: 0.296022743, green: 0.03586935252, blue: 0.01109559834, alpha: 1)
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.hidesSearchBarWhenScrolling = false
-        
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : color]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : color]
+
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.296022743, green: 0.03586935252, blue: 0.01109559834, alpha: 1)
+
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "What do you want to eat?"
+        searchController.searchBar.tintColor = #colorLiteral(red: 0.296022743, green: 0.03586935252, blue: 0.01109559834, alpha: 1)
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
         
     }
@@ -102,6 +109,7 @@ extension RecipeHomeViewController :  UISearchBarDelegate, UISearchResultsUpdati
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        categoryViewController.view.isHidden = true
         listViewController.view.isHidden = false
 
 //        UIView.animate(withDuration: 1) {
@@ -111,6 +119,8 @@ extension RecipeHomeViewController :  UISearchBarDelegate, UISearchResultsUpdati
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         listViewController.view.isHidden = true
+        categoryViewController.view.isHidden = false
+
 
 //        UIView.animate(withDuration: 1) {
 //            self.listViewController.tableView.setContentOffset(.zero, animated: false)
