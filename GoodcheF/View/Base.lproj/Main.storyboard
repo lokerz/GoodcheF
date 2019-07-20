@@ -122,7 +122,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QMO-qD-Mq9" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1323.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1123.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AyamSteak" translatesAutoresizingMaskIntoConstraints="NO" id="mHL-BR-C15">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
@@ -159,7 +159,7 @@
                                                     <action selector="favButtonAction:" destination="Elr-Uc-rPt" eventType="touchUpInside" id="4d5-Vx-Ggy"/>
                                                 </connections>
                                             </button>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ALF-Cm-hIi">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ALF-Cm-hIi">
                                                 <rect key="frame" x="40" y="370.5" width="333" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -197,14 +197,14 @@
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <integer key="value" value="30"/>
+                                                        <integer key="value" value="25"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xai-AS-RLT">
-                                                <rect key="frame" x="18" y="715.5" width="378" height="600"/>
+                                                <rect key="frame" x="18" y="515.5" width="378" height="600"/>
                                                 <subviews>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="362" placeholderIntrinsicHeight="600" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dGU-H0-idT" customClass="StepTableView" customModule="GoodcheF" customModuleProvider="target">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="362" placeholderIntrinsicHeight="600" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dGU-H0-idT" customClass="CustomTableView" customModule="GoodcheF" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="0.0" width="362" height="600"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                         <prototypes>
@@ -228,20 +228,17 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzq-HZ-4TK">
-                                                <rect key="frame" x="18" y="495.5" width="378" height="200"/>
+                                                <rect key="frame" x="18" y="495.5" width="378" height="0.0"/>
                                                 <subviews>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="20" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="B3v-hf-cvW">
-                                                        <rect key="frame" x="8" y="0.0" width="362" height="200"/>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="362" placeholderIntrinsicHeight="0.0" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="20" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="B3v-hf-cvW" customClass="CustomTableView" customModule="GoodcheF" customModuleProvider="target">
+                                                        <rect key="frame" x="8" y="0.0" width="362" height="0.0"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="200" identifier="ingredientHeight" id="ro3-Po-ZqW"/>
-                                                        </constraints>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="30" id="7hX-z0-A5r">
                                                                 <rect key="frame" x="0.0" y="55.5" width="362" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7hX-z0-A5r" id="SYw-Na-O23">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="362" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="362" height="29.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
                                                             </tableViewCell>
@@ -252,8 +249,8 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="B3v-hf-cvW" secondAttribute="trailing" constant="8" id="LyY-RQ-hXT"/>
                                                     <constraint firstItem="B3v-hf-cvW" firstAttribute="top" secondItem="hzq-HZ-4TK" secondAttribute="top" id="YUp-gf-Tms"/>
+                                                    <constraint firstAttribute="height" secondItem="B3v-hf-cvW" secondAttribute="height" id="d1G-cu-HYo"/>
                                                     <constraint firstItem="B3v-hf-cvW" firstAttribute="leading" secondItem="hzq-HZ-4TK" secondAttribute="leading" constant="8" id="sjH-bM-Xlu"/>
-                                                    <constraint firstAttribute="bottom" secondItem="B3v-hf-cvW" secondAttribute="bottom" id="uHX-DX-uqj"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -305,7 +302,7 @@
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
                         <outlet property="collectionView" destination="ALF-Cm-hIi" id="o1i-zk-PXx"/>
-                        <outlet property="cookButtonOutlet" destination="jjF-TF-isb" id="qWU-Jr-6Sb"/>
+                        <outlet property="cookButtonOutlet" destination="Cyh-eA-yOu" id="x4w-8B-Rt6"/>
                         <outlet property="favButtonOutlet" destination="WAr-PA-BIQ" id="AzD-ju-UJK"/>
                         <outlet property="ingredientTableView" destination="B3v-hf-cvW" id="XML-5a-Yru"/>
                         <outlet property="ingredientView" destination="hzq-HZ-4TK" id="3c7-yj-B3d"/>
@@ -372,7 +369,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Aqh-2a-G6W">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Aqh-2a-G6W">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>

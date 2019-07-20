@@ -29,15 +29,20 @@ class RecipeCardCollectionCell: UICollectionViewCell {
         contentViewOutlet.layer.cornerRadius = 15
         contentViewOutlet.layer.masksToBounds = true
         
+        self.backgroundColor = .clear
+        setShadow()
+        
+        shadowOutlet.backgroundColor = .white
+        shadowOutlet.alpha = 0.70
+    }
+    
+    func setShadow(){
         self.clipsToBounds = false
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOpacity = 0.3
-        self.layer.shadowOffset = CGSize(width: 0, height: 3)
-        self.layer.shadowRadius = 6
-        self.backgroundColor = .clear
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowRadius = 4
 
-        shadowOutlet.backgroundColor = .white
-        shadowOutlet.alpha = 0.70
     }
 }

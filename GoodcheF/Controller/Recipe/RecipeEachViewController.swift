@@ -39,17 +39,21 @@ class RecipeEachViewController: UIViewController {
         if let recipe = recipe{
             recipeSubtitleOutlet.text = "Porsi \(recipe.Portion ?? "1") Orang, \(recipe.Time) Menit"
             img = UIImage(named: (recipe.Image)!)
-            let imageData = img?.midQuality
+            let imageData = img?.highQuality
             recipeImageOutlet.image = UIImage(data: imageData! as Data)
         }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         ingredientCategorize()
-
         setupNavBar()
-        setupButton()
         askIfFavorite()
-        setHeight()
+        setButtonShadow(cookButtonOutlet)
         setShadow(ingredientView)
         setShadow(stepView)
+        setHeight()
     }
     
     func setupNavBar(){
@@ -59,22 +63,37 @@ class RecipeEachViewController: UIViewController {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.296022743, green: 0.03586935252, blue: 0.01109559834, alpha: 1)
     }
     
-    func setupButton(){
-        
+    func setShadow(_ view : UIView){
+        view.layer.cornerRadius = 15
+        view.clipsToBounds = false
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.lightGray.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 0, height: 3)
+        view.layer.shadowRadius = 3
+        //view.backgroundColor = .clear
     }
     
+    func setButtonShadow(_ view : UIButton){
+        view.clipsToBounds = false
+        view.layer.masksToBounds = false
+        view.layer.cornerRadius = 15
+        view.layer.shadowColor = UIColor.lightGray.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 0, height: 3)
+        view.layer.shadowRadius = 3
+        //view.backgroundColor = .clear
+    }
+    
+    
     func askIfFavorite(){
-        for recipe in DataManager.shared.recipeFavorites{
-            if self.recipe?.Id == recipe{
-                isFavorite = true
-                favButtonOutlet.imageView?.image = UIImage(named: "fav")
-                break
-            }
-            else{
-                isFavorite = false
-                favButtonOutlet.imageView?.image = UIImage(named: "fav2")
-                break
-            }
+        isFavorite = false
+        if DataManager.shared.recipeFavorites.contains(recipe!.Id){
+            isFavorite = true
+            favButtonOutlet.setImage(UIImage(named: "fav"), for: .normal)
+        }
+        else {
+            favButtonOutlet.setImage(UIImage(named: "unfav"), for: .normal)
         }
     }
     
@@ -109,7 +128,7 @@ class RecipeEachViewController: UIViewController {
         var favoriteExist = false
         if isFavorite{
             isFavorite = false
-            favButtonOutlet.setImage(UIImage(named: "fav2"), for: .normal)
+            favButtonOutlet.setImage(UIImage(named: "unfav"), for: .normal)
             for i in 0...DataManager.shared.recipeFavorites.count - 1{
                 if recipe?.Id == DataManager.shared.recipeFavorites[i] {
                     DataManager.shared.recipeFavorites.remove(at: i)
@@ -135,25 +154,19 @@ class RecipeEachViewController: UIViewController {
 }
 extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource {
     func setHeight(){
-        for constraint in ingredientTableView.constraints {
-            if constraint.identifier == "ingredientHeight"{
-                var count = 0
-                for i in 0 ... categoryArr.count - 1{
-                    count += ingredientTableView.numberOfRows(inSection: i)
-                }
-                let height = ingredientTableView.numberOfSections * Int(ingredientTableView.sectionHeaderHeight + ingredientTableView.sectionFooterHeight) + (count + categoryArr.count) * Int(ingredientTableView.rowHeight)
-                constraint.constant = CGFloat(height)
-            }
-        }
-        print(stepTableView.contentSize)
-        stepTableView.reloadData()
+        print(ingredientTableView.intrinsicContentSize)
+        ingredientTableView.rowHeight = UITableView.automaticDimension
+        ingredientTableView.invalidateIntrinsicContentSize()
+        ingredientTableView.reloadData()
+        
+        
+        print(stepTableView.intrinsicContentSize)
         stepTableView.rowHeight = UITableView.automaticDimension
         stepTableView.invalidateIntrinsicContentSize()
-        print(stepTableView.contentSize)
-
+        stepTableView.reloadData()
+        
         ingredientTableView.layoutIfNeeded()
         stepTableView.layoutIfNeeded()
-        
         ingredientView.layoutIfNeeded()
         stepView.layoutIfNeeded()
         
@@ -163,18 +176,6 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
         stepTableView.backgroundColor = .clear
     }
     
-    func setShadow(_ view : UIView){
-        view.layer.cornerRadius = 15
-        view.layer.masksToBounds = true
-        
-        view.clipsToBounds = false
-        view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.lightGray.cgColor
-        view.layer.shadowOpacity = 0.3
-        view.layer.shadowOffset = CGSize(width: 0, height: 3)
-        view.layer.shadowRadius = 5
-        //view.backgroundColor = .clear
-    }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -233,11 +234,12 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
         if let recipe = recipe{
             if tableView == ingredientTableView {
                 if ingredientArr[indexPath.section][indexPath.row].Amount > 0{
-                cell.textLabel?.text = "   \(ingredientArr[indexPath.section][indexPath.row].Amount) \(ingredientArr[indexPath.section][indexPath.row].Unit ?? "") \(ingredientArr[indexPath.section][indexPath.row].Name)"
+                cell.textLabel?.text = "\(ingredientArr[indexPath.section][indexPath.row].Amount) \(ingredientArr[indexPath.section][indexPath.row].Unit ?? "") \(ingredientArr[indexPath.section][indexPath.row].Name)"
                 }
                 else {
-                    cell.textLabel?.text = "   \(ingredientArr[indexPath.section][indexPath.row].Unit ?? "") \(ingredientArr[indexPath.section][indexPath.row].Name)"
+                    cell.textLabel?.text = "\(ingredientArr[indexPath.section][indexPath.row].Unit ?? "") \(ingredientArr[indexPath.section][indexPath.row].Name)"
                 }
+                cell.indentationWidth = 10
             }
             else {
                 cell.textLabel?.text = "\(indexPath.row + 1). "
@@ -245,11 +247,11 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
                     if let str = step as String?{
                         cell.textLabel?.text = cell.textLabel!.text! + "\(str) "
                     }
-                    cell.textLabel?.numberOfLines = 0
-                    cell.textLabel?.textAlignment = .justified
                 }
+                cell.textLabel?.textAlignment = .justified
             }
         }
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.textColor = #colorLiteral(red: 0.296022743, green: 0.03586935252, blue: 0.01109559834, alpha: 1)
         cell.textLabel?.font = .systemFont(ofSize: 15)
         cell.backgroundColor = .clear

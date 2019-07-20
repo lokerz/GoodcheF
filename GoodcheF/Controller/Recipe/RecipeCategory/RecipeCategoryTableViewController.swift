@@ -57,7 +57,9 @@ class RecipeCategoryTableViewController: UITableViewController {
             loadCategory(category)
         }
         loadTime()
-        loadFavorites()
+        if DataManager.shared.recipeFavorites.count > 0 {
+            loadFavorites()
+        }
        
     }
     
@@ -99,7 +101,12 @@ class RecipeCategoryTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return categoryArr.count
+        if DataManager.shared.recipeFavorites.count > 0 {
+            return categoryArr.count
+        }
+        else {
+            return categoryArr.count - 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -121,13 +128,13 @@ class RecipeCategoryTableViewController: UITableViewController {
         footer.backgroundView?.backgroundColor = .clear
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 220
+        return 213
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 29
     }
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 32
+        return 30
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for : indexPath) as! RecipeCategoryTableViewCell

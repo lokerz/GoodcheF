@@ -222,7 +222,7 @@
       [
         "Taruh daging ikan, putih telur, dan garam dalam food processor, proses hingga halus.",
         "Tuangi air es sedikit demi sedikit, tambahkan tepung kanji, proses hingga adonan kalis dan tidak melekat di tangan. ",
-        "Keluarkan adonan dari food processor, pindahkan ke dalam mangkuk.\n"
+        "Keluarkan adonan dari food processor, pindahkan ke dalam mangkuk."
       ],
       [
         "Didihkan air dalam panci.",
@@ -443,7 +443,7 @@
         "Category" : ""
       },
       {
-        "Name" : "Udang kecil, kupas, rebus, untuk taburan\n",
+        "Name" : "Udang kecil, kupas, rebus, untuk taburan",
         "Amount" : 25,
         "Unit" : "Gram",
         "Category" : ""
@@ -538,13 +538,13 @@
     "Image" : "AyamBalutKacangTanah",
     "Ingredient" : [
       {
-        "Name" : "Sayap ayam\n ",
+        "Name" : "Sayap ayam",
         "Amount" : 500,
         "Unit" : "Gram",
         "Category" : ""
       },
       {
-        "Name" : "Air jeruk nipis\n",
+        "Name" : "Air jeruk nipis",
         "Amount" : 2,
         "Unit" : "Sdm",
         "Category" : ""
@@ -562,13 +562,13 @@
         "Category" : ""
       },
       {
-        "Name" : "Merica bubuk ",
+        "Name" : "Merica bubuk",
         "Amount" : 0,
         "Unit" : "1/2 Sdt",
         "Category" : ""
       },
       {
-        "Name" : "Garam\n\n ",
+        "Name" : "Garam",
         "Amount" : 1,
         "Unit" : "Sdt",
         "Category" : ""
@@ -610,7 +610,7 @@
         "Category" : "Lapisan"
       },
       {
-        "Name" : "Bawang bombai, iris melintang tipis.\n",
+        "Name" : "Bawang bombai, iris melintang tipis.",
         "Amount" : 50,
         "Unit" : "Gram",
         "Category" : "Saus"
@@ -789,7 +789,7 @@
         "Kukus kembali selama 5 menit"
       ],
       [
-        "Angkat kue dari kukusan lalu beri taburan kelapa parut.\n"
+        "Angkat kue dari kukusan lalu beri taburan kelapa parut."
       ]
     ],
     "Time" : 60
@@ -939,7 +939,7 @@
         "Category" : ""
       },
       {
-        "Name" : "Margarin Blue Band Serbaguna\n",
+        "Name" : "Margarin Blue Band Serbaguna",
         "Amount" : 3,
         "Unit" : "Sdm",
         "Category" : ""
@@ -985,7 +985,7 @@
     "Image" : "NasiGorengAyamMozarella",
     "Ingredient" : [
       {
-        "Name" : "Daging ayam tanpa tulang matang (dipotong dadu).\n",
+        "Name" : "Daging ayam tanpa tulang matang (dipotong dadu).",
         "Amount" : 50,
         "Unit" : "Gram",
         "Category" : ""

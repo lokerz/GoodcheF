@@ -58,7 +58,7 @@ class RecipeListViewController: UITableViewController {
         cell.selectionStyle = .none
         
         let img = UIImage(named: recipe.Image!)!
-        let imageData = img.highQuality
+        let imageData = img.midQuality
         cell.imageOutlet.image = UIImage(data: imageData as Data)
         
         cell.setCell()

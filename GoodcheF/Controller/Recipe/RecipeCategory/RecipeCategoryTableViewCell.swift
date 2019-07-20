@@ -49,7 +49,7 @@ extension RecipeCategoryTableViewCell : UICollectionViewDelegate, UICollectionVi
         cell.titleOutlet.text = recipes[indexPath.row].Name
         cell.subtitleOutlet.text = "Porsi \(recipes[indexPath.row].Portion ?? "1") Orang, \(recipes[indexPath.row].Time) Menit"
         let img = UIImage(named: recipes[indexPath.row].Image!)!
-        let imageData = img.highQuality
+        let imageData = img.lowQuality
         cell.imageOutlet.image = UIImage(data: imageData as Data)
         cell.setCell()
         return cell

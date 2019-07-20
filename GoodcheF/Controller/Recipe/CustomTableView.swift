@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StepTableView: UITableView {
+class CustomTableView: UITableView {
 
     override var intrinsicContentSize: CGSize{
         setNeedsLayout()

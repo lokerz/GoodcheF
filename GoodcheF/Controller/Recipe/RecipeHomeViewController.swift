@@ -67,7 +67,7 @@ class RecipeHomeViewController: UIViewController, HomeDelegate {
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "What do you want to eat?"
+        searchController.searchBar.placeholder = "Makan apa ya?"
         searchController.searchBar.tintColor = #colorLiteral(red: 0.296022743, green: 0.03586935252, blue: 0.01109559834, alpha: 1)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -109,23 +109,26 @@ extension RecipeHomeViewController :  UISearchBarDelegate, UISearchResultsUpdati
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+       
+        listViewController.tableView.layoutIfNeeded()
+        listViewController.tableView.beginUpdates()
+        listViewController.tableView.setContentOffset(.zero, animated: false)
+        listViewController.tableView.endUpdates()
+        
         categoryViewController.view.isHidden = true
         listViewController.view.isHidden = false
-
-//        UIView.animate(withDuration: 1) {
-//            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: 0)
-//        }
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        listViewController.view.isHidden = true
+        
+        listViewController.tableView.layoutIfNeeded()
+        listViewController.tableView.beginUpdates()
+        listViewController.tableView.setContentOffset(.zero, animated: false)
+        listViewController.tableView.endUpdates()
+        
         categoryViewController.view.isHidden = false
-
-
-//        UIView.animate(withDuration: 1) {
-//            self.listViewController.tableView.setContentOffset(.zero, animated: false)
-//            self.listViewController.view.transform = CGAffineTransform(translationX: 0, y: -1000)
-//        }
+        listViewController.view.isHidden = true
     }
 }
 
