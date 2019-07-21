@@ -45,15 +45,15 @@ class DataManager : NSObject{
     
     let allergenList : [String] = [
         "Gluten",
-        "Telur",
         "Produk Susu",
+        "Telur",
         "Udang, Kepiting dan Kerang",
         "Kacang - kacangan",
         "Pengawet dan Perisa"]
     let allergenSubtitleList : [String] = [
         "Bahan Gluten akan digantikan dengan bahan lain.",
-        "Resep dengan Telur akan dihilangkan.",
         "Bahan Produk Susu akan digantikan dengan bahan lain.",
+        "Resep dengan Telur akan dihilangkan.",
         "Bahan Udang, Kepiting dan Kerang akan digantikan dengan bahan lain.",
         "Resep dengan Kacang - kacangan akan dihilangkan.",
         "Bahan Pengawet dan Perisa akan diganti"
@@ -62,6 +62,7 @@ class DataManager : NSObject{
     var allergenVal : String?
     
     func saveAllergen(){
+        print(allergenVal)
         database.set(true, forKey: "allergenOnboarding")
         database.set(allergenVal, forKey: "allergenVal")
     }
@@ -93,8 +94,7 @@ class DataManager : NSObject{
     }
     
     func filterRecipes(){
-        print(#function)
-        allergenVal = "100100"
+        print(#function, allergenVal)
         checkAllergen()
         if Array(allergenVal!)[0] == "1"{
             //filter done

@@ -32,12 +32,7 @@ class RecipeEachViewController: UIViewController {
     var imageArr = ["gluten", "lactose", "egg", "crustacean", "nut", "msg"]
     
     
-//    speech recognizer variable
-    let audioEngine = AVAudioEngine()
-    let speechRecognizer : SFSpeechRecognizer? = SFSpeechRecognizer()
-    let request = SFSpeechAudioBufferRecognitionRequest()
-    var recognitionTask : SFSpeechRecognitionTask?
-//
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,20 +43,20 @@ class RecipeEachViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         ingredientCategorize()
         setupNavBar()
         askIfFavorite()
         setTitle()
-        setImage()
         setButtonShadow(cookButtonOutlet)
         setShadow(ingredientView)
         setShadow(stepView)
         setHeight()
-        recordAndRecognizeSpeech()
+        setImage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
     
     func setupNavBar(){
@@ -170,6 +165,16 @@ class RecipeEachViewController: UIViewController {
         DataManager.shared.saveFavorites()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "instructionSegue"{
+            let vc = segue.destination as! RecipeLiveViewController
+            vc.judul = recipe!.Name
+            vc.steps = recipe!.Step
+        }
+    }
+    
+    @IBAction func cookButtonAction(_ sender: UIButton) {
+    }
     
 }
 extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource {
@@ -316,35 +321,3 @@ extension RecipeEachViewController : UICollectionViewDataSource, UICollectionVie
     }
 }
 
-extension RecipeEachViewController : SFSpeechRecognizerDelegate{
-    
-    func recordAndRecognizeSpeech(){
-        let node = audioEngine.inputNode
-        let recordingFormat = node.outputFormat(forBus: 0)
-        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
-            self.request.append(buffer)
-        }
-        
-        audioEngine.prepare()
-        do {
-            try audioEngine.start()
-        } catch {
-            return print("error")
-        }
-        
-        guard let myRecognizer = SFSpeechRecognizer() else {return}
-        if !myRecognizer.isAvailable {return}
-        
-        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
-            if let result = result {
-                let bestString = result.bestTranscription.formattedString
-                self.title = bestString
-            }else if let error = error {
-                print(error)
-            }
-        })
-        
-    }
-    
-    
-}

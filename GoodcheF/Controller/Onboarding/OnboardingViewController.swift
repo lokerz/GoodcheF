@@ -57,13 +57,45 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setCheckmark()
         setLabel()
         setBackground()
         setButton()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
     
+    func setCheckmark(){
+        let allergenVal = DataManager.shared.allergenVal
+        
+        if Array(allergenVal!)[0] == "1"{
+            gluten = true
+            checkedAction(gluten, glutenCheckmark, glutenSubtitleOutlet)
+        }
+        if Array(allergenVal!)[1] == "1"{
+            susu = true
+            checkedAction(susu, susuCheckmark, susuSubtitleOutlet)
+        }
+        if Array(allergenVal!)[2] == "1"{
+            telur = true
+            checkedAction(telur, telurCheckmark, telurSubtitleOutlet)
+        }
+        if Array(allergenVal!)[3] == "1"{
+            kepiting = true
+            checkedAction(kepiting, kepitingCheckmark, kepitingSubtitleOutlet)
+        }
+        if Array(allergenVal!)[4] == "1"{
+            kacang = true
+            checkedAction(kacang, kacangCheckmark, kacangSubtitleOutlet)
+        }
+        if Array(allergenVal!)[5] == "1"{
+            kimia = true
+            checkedAction(kimia, kimiaCheckmark, kimiaSubtitleOutlet)
+        }
+    }
     func setLabel(){
-        headerOutlet.text = "Saya \nalergi/intoleran \nterhadap:"
+        headerOutlet.text = "Saya \nalergi / intoleran \nterhadap:"
         headerOutlet.textColor = .darkchocoColor
         footerOutlet.text = "Pilihan anda akan digunakan untuk memilah resep sesuai dengan kebutuhan anda."
         footerOutlet.textColor = .darkchocoColor
@@ -95,79 +127,64 @@ class OnboardingViewController: UIViewController {
         lewatiButton.setTitle("Lewati", for: .normal)
         lewatiButton.setTitleColor(.darkchocoColor, for: .normal)
     }
-
-    @IBAction func glutenClickAction(_ sender: UIButton){
-        gluten =  !gluten
-        if gluten == true{
-            glutenCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
-        }
-        else{
-            glutenCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
-        }
-    }
     
-    @IBAction func susuClickAction(_ sender: UIButton){
-        susu =  !susu
-        if susu == true{
-            susuCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
+    func checkedAction(_ state : Bool,_ check : UIButton,_ subtitle : UILabel){
+        if state{
+            check.setImage(UIImage(named: "Checked"), for: .normal)
+            subtitle.isHidden = false
         }
         else{
-            susuCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
-        }
-    }
-    
-    @IBAction func telurClickAction(_ sender: UIButton){
-        telur =  !telur
-        if telur == true{
-            telurCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
-        }
-        else{
-            telurCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
-        }
-    }
-    
-    @IBAction func kepitingClickAction(_ sender: UIButton){
-        kepiting =  !kepiting
-        if kepiting == true{
-            kepitingCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
-        }
-        else{
-            kepitingCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
-        }
-    }
-    
-    @IBAction func kacangClickAction(_ sender: UIButton){
-        kacang =  !kacang
-        if kacang == true{
-            kacangCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
-        }
-        else{
-            kacangCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
-        }
-    }
-    
-    @IBAction func kimiaClickAction(_ sender: UIButton){
-        kimia =  !kimia
-        if kimia == true{
-            kimiaCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
-        }
-        else{
-            kimiaCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
+            check.setImage(UIImage(named: "checkBox"), for: .normal)
+            subtitle.isHidden = true
         }
     }
 
+    @IBAction func ClickAction(_ sender: UIButton){
+        switch sender.tag {
+        case 0 :
+            gluten =  !gluten
+            checkedAction(gluten, glutenCheckmark, glutenSubtitleOutlet)
+        case 1 :
+            susu = !susu
+            checkedAction(susu, susuCheckmark, susuSubtitleOutlet)
+        case 2 :
+            telur =  !telur
+            checkedAction(telur, telurCheckmark, telurSubtitleOutlet)
+        case 3 :
+            kepiting =  !kepiting
+            checkedAction(kepiting, kepitingCheckmark, kepitingSubtitleOutlet)
+        case 4 :
+            kacang =  !kacang
+            checkedAction(kacang, kacangCheckmark, kacangSubtitleOutlet)
+        default:
+            kimia =  !kimia
+            checkedAction(kimia, kimiaCheckmark, kimiaSubtitleOutlet)
+        }
+    }
 
 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     func getCheckmark() -> String{
-        let checkedMark = "000000"
+        var checkedMark = ""
+        let arr = [gluten, susu, telur, kepiting, kacang, kimia]
+        for member in arr{
+            if member {
+                checkedMark += "1"
+            }else{
+                checkedMark += "0"
+            }
+        }
+        print (checkedMark)
         return checkedMark
     }
     
     @IBAction func simpanButtonAction(_ sender: Any) {
         DataManager.shared.allergenVal = getCheckmark()
         DataManager.shared.saveAllergen()
-        
-
+        DataManager.shared.loadJson()
+        DataManager.shared.loadFavorites()
+        DataManager.shared.filterRecipes()
+        performSegue(withIdentifier: "ResepSegue", sender: self)
     }
     
     @IBAction func lewatiButtonAction(_ sender: Any) {
