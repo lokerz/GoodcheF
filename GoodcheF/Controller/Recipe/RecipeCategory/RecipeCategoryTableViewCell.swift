@@ -46,11 +46,7 @@ extension RecipeCategoryTableViewCell : UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCardCollectionCell", for : indexPath) as! RecipeCardCollectionCell
-        cell.titleOutlet.text = recipes[indexPath.row].Name
-        cell.subtitleOutlet.text = "Porsi \(recipes[indexPath.row].Portion ?? "1") Orang, \(recipes[indexPath.row].Time) Menit"
-        let img = UIImage(named: recipes[indexPath.row].Image!)!
-        let imageData = img.lowQuality
-        cell.imageOutlet.image = UIImage(data: imageData as Data)
+        cell.recipe = recipes[indexPath.row]
         cell.setCell()
         return cell
     }

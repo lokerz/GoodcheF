@@ -20,6 +20,7 @@ struct Recipe : Decodable{
     let Portion : String?
     var Ingredient : [Ingredient]
     var Step : [[String]]
+    var Allergen: [Bool]?
 }
 
 struct Ingredient : Decodable{
@@ -31,7 +32,6 @@ struct Ingredient : Decodable{
 
 class DataManager : NSObject{
     static let shared = DataManager()
-    
     let database = UserDefaults.standard
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recipeJson : [Recipe]?
@@ -45,15 +45,15 @@ class DataManager : NSObject{
     
     let allergenList : [String] = [
         "Gluten",
-        "Telur",
         "Produk Susu",
+        "Telur",
         "Udang, Kepiting dan Kerang",
         "Kacang - kacangan",
         "Pengawet dan Perisa"]
     let allergenSubtitleList : [String] = [
         "Bahan Gluten akan digantikan dengan bahan lain.",
-        "Resep dengan Telur akan dihilangkan.",
         "Bahan Produk Susu akan digantikan dengan bahan lain.",
+        "Resep dengan Telur akan dihilangkan.",
         "Bahan Udang, Kepiting dan Kerang akan digantikan dengan bahan lain.",
         "Resep dengan Kacang - kacangan akan dihilangkan.",
         "Bahan Pengawet dan Perisa akan diganti"
@@ -62,6 +62,7 @@ class DataManager : NSObject{
     var allergenVal : String?
     
     func saveAllergen(){
+        print(allergenVal)
         database.set(true, forKey: "allergenOnboarding")
         database.set(allergenVal, forKey: "allergenVal")
     }
@@ -93,25 +94,57 @@ class DataManager : NSObject{
     }
     
     func filterRecipes(){
-        print(#function)
-        allergenVal = "000000"
+        print(#function, allergenVal)
+        checkAllergen()
         if Array(allergenVal!)[0] == "1"{
+            //filter done
             filterGluten()
         }
         if Array(allergenVal!)[1] == "1"{
+            //filter done
             filterLactose()
         }
         if Array(allergenVal!)[2] == "1"{
+            //filter done
             filterEgg()
         }
         if Array(allergenVal!)[3] == "1"{
+            //filter done
             filterCrustacean()
         }
         if Array(allergenVal!)[4] == "1"{
+            //filter done
             filterNut()
         }
         if Array(allergenVal!)[5] == "1"{
+            //filter done
             filterMSG()
+        }
+    }
+    
+    func checkAllergen(){
+        print((#function))
+        let keyword = [
+            ["terigu", "roti", "spageti", "mie", "bakmi"]
+            ,["susu", "susu sapi"]
+            ,["telur", "telor"]
+            ,["kepiting", "udang", "lobster", "kerang", "rajungan", "siput", "tutut", "udang galah",]
+            ,["kacang", "mede", "almond", "kenari", "nut"]
+            ,["kaleng", "penyedap"]
+        ]
+        for j in 0...recipeJson!.count - 1{
+            recipeJson![j].Allergen = [Bool]()
+            
+            for i in 0...keyword.count - 1 {
+                var temp = false
+                for key in keyword[i]{
+                    if recipeJson![j].Name.lowercased().contains(key) || recipeJson![j].Ingredient.contains(where: {$0.Name.lowercased().contains(key)}) {
+                        temp = true
+                        break
+                    }
+                }
+                recipeJson![j].Allergen?.append(temp)
+            }
         }
     }
     
@@ -121,17 +154,77 @@ class DataManager : NSObject{
         let keyword2 = ["roti", "spageti", "mie", "bakmi"]
 
         
+        //substitute terigu
+        for word in keyword{
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Ingredient.count - 1{
+                    if recipeJson![i].Ingredient[j].Name.lowercased().contains(word){
+                        let flour = Double(recipeJson![i].Ingredient[j].Amount)
+                        let rice = 0.5 * flour
+                        let tapioca = 0.25 * flour
+                        let corn = 0.25 * flour
+                        let unit = recipeJson![i].Ingredient[j].Unit!
+                        recipeJson![i].Ingredient[j].Name = recipeJson![i].Ingredient[j].Name.lowercased().replacingOccurrences(of: word, with: "pengganti Tepung Terigu:\n - \(rice) \(unit) tepung beras\n - \(tapioca) \(unit) tepung tapioka\n - \(corn) \(unit) tepung jagung")
+                    }
+                }
+            }
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Step.count - 1{
+                    for k in 0...recipeJson![i].Step[j].count - 1{
+                        if recipeJson![i].Step[j][k].lowercased().contains(word){
+                            recipeJson![i].Step[j][k] = recipeJson![i].Step[j][k].lowercased().replacingOccurrences(of: word, with: "pengganti Tepung Terigu")
+                        }
+                    }
+                }
+            }
+        }
+        
+        for word in keyword2{
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Ingredient.count - 1{
+                    if recipeJson![i].Ingredient[j].Name.lowercased().contains(word){
+                        recipeJson![i].Ingredient[j].Name = recipeJson![i].Ingredient[j].Name + " non Gluten"
+                    }
+                }
+            }
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Step.count - 1{
+                    for k in 0...recipeJson![i].Step[j].count - 1{
+                        if recipeJson![i].Step[j][k].lowercased().contains(word){
+                            recipeJson![i].Step[j][k] = recipeJson![i].Step[j][k].lowercased().replacingOccurrences(of: word, with: word + " non Gluten")
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func filterLactose(){
         //ganti bahan jadi susu almond/kedelai/kelapa(santan)
-        let keyword = ["kacang", "mede", "almond", "kenari", "nut"]
+        let keyword = ["susu", "susu sapi"]
 
+        for word in keyword{
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Ingredient.count - 1{
+                    if recipeJson![i].Ingredient[j].Name.lowercased().contains(word){
+                        recipeJson![i].Ingredient[j].Name = "susu almond/kedelai/kelapa"
+                    }
+                }
+            }
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Step.count - 1{
+                    for k in 0...recipeJson![i].Step[j].count - 1{
+                        if recipeJson![i].Step[j][k].lowercased().contains(word){
+                            recipeJson![i].Step[j][k] = recipeJson![i].Step[j][k].lowercased().replacingOccurrences(of: word, with: "susu almond/kedelai/kelapa")
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func filterEgg(){
         //resep hilang
-        print(#function)
         let keyword = ["telur", "telor"]
         for word in keyword{
             recipeJson?.removeAll(where: {
@@ -143,8 +236,7 @@ class DataManager : NSObject{
     
     func filterCrustacean(){
         //kalau judul ilang, kalau bahan substitusi kakap
-        print(#function)
-        let keyword = ["kepiting", "udang", "lobster", "kerang", "rajungan", "siput", "tutut", "udang galah",]
+        let keyword = ["kepiting", "udang", "lobster", "kerang", "rajungan", "siput", "tutut", "udang galah"]
         //remove
         for word in keyword{
             recipeJson?.removeAll(where: {
@@ -160,23 +252,74 @@ class DataManager : NSObject{
                     }
                 }
             }
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Step.count - 1{
+                    for k in 0...recipeJson![i].Step[j].count - 1{
+                        if recipeJson![i].Step[j][k].lowercased().contains(word){
+                            recipeJson![i].Step[j][k] = recipeJson![i].Step[j][k].lowercased().replacingOccurrences(of: word, with: "ikan kakap")
+                        }
+                    }
+                }
+            }
         }
-
     }
     
     func filterNut(){
         //resep hilang
-        print(#function)
         let keyword = ["kacang", "mede", "almond", "kenari", "nut"]
     
+        for word in keyword{
+            recipeJson?.removeAll(where: {
+                $0.Ingredient.contains(where: {
+                    $0.Name.contains(word)
+                })
+            })
+        }
     }
     
     func filterMSG(){
-        print(#function)
         //bahan ganti kaldu organik
         //kaleng -> fresh
         //penyedap -> kaldu organik
         let keyword = ["kaleng"]
         let keyword2 = ["penyedap"]
+        
+        for word in keyword{
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Ingredient.count - 1{
+                    if recipeJson![i].Ingredient[j].Name.lowercased().contains(word){
+                        recipeJson![i].Ingredient[j].Name = recipeJson![i].Ingredient[j].Name.lowercased().replacingOccurrences(of: word, with: " segar")
+                    }
+                }
+            }
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Step.count - 1{
+                    for k in 0...recipeJson![i].Step[j].count - 1{
+                        if recipeJson![i].Step[j][k].lowercased().contains(word){
+                            recipeJson![i].Step[j][k] = recipeJson![i].Step[j][k].lowercased().replacingOccurrences(of: word, with: " segar")
+                        }
+                    }
+                }
+            }
+        }
+        
+        for word in keyword2{
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Ingredient.count - 1{
+                    if recipeJson![i].Ingredient[j].Name.lowercased().contains(word){
+                        recipeJson![i].Ingredient[j].Name = recipeJson![i].Ingredient[j].Name.lowercased().replacingOccurrences(of: word, with: "kaldu organik")
+                    }
+                }
+            }
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Step.count - 1{
+                    for k in 0...recipeJson![i].Step[j].count - 1{
+                        if recipeJson![i].Step[j][k].lowercased().contains(word){
+                            recipeJson![i].Step[j][k] = recipeJson![i].Step[j][k].lowercased().replacingOccurrences(of: word, with: "kaldu organik")
+                        }
+                    }
+                }
+            }
+        }
     }
 }

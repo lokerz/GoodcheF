@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Speech
+import AVKit
 
 class RecipeEachViewController: UIViewController {
 
@@ -27,7 +29,10 @@ class RecipeEachViewController: UIViewController {
     var categoryArr = [String]()
     var ingredientArr = [[Ingredient]]()
     var img : UIImage?
+    var imageArr = ["gluten", "lactose", "egg", "crustacean", "nut", "msg"]
     
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,25 +40,23 @@ class RecipeEachViewController: UIViewController {
         ingredientTableView.dataSource = self
         stepTableView.delegate = self
         stepTableView.dataSource = self
-        recipeTitleOutlet.text = recipe?.Name
-        if let recipe = recipe{
-            recipeSubtitleOutlet.text = "Porsi \(recipe.Portion ?? "1") Orang, \(recipe.Time) Menit"
-            img = UIImage(named: (recipe.Image)!)
-            let imageData = img?.highQuality
-            recipeImageOutlet.image = UIImage(data: imageData! as Data)
-        }
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         ingredientCategorize()
         setupNavBar()
         askIfFavorite()
+        setTitle()
         setButtonShadow(cookButtonOutlet)
         setShadow(ingredientView)
         setShadow(stepView)
         setHeight()
+        setImage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
     
     func setupNavBar(){
@@ -61,6 +64,18 @@ class RecipeEachViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.296022743, green: 0.03586935252, blue: 0.01109559834, alpha: 1)
+    }
+    
+    func setTitle(){
+        recipeTitleOutlet.text = recipe?.Name
+        
+        if let recipe = recipe{
+            recipeSubtitleOutlet.text = "Porsi \(recipe.Portion ?? "1") Orang, \(recipe.Time) Menit"
+            img = UIImage(named: (recipe.Image)!)
+            let imageData = img?.highQuality
+            recipeImageOutlet.image = UIImage(data: imageData! as Data)
+        }
+        
     }
     
     func setShadow(_ view : UIView){
@@ -150,6 +165,16 @@ class RecipeEachViewController: UIViewController {
         DataManager.shared.saveFavorites()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "instructionSegue"{
+            let vc = segue.destination as! RecipeLiveViewController
+            vc.judul = recipe!.Name
+            vc.steps = recipe!.Step
+        }
+    }
+    
+    @IBAction func cookButtonAction(_ sender: UIButton) {
+    }
     
 }
 extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource {
@@ -262,14 +287,37 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
 }
 
 extension RecipeEachViewController : UICollectionViewDataSource, UICollectionViewDelegate{
+    
+    func setImage(){
+        guard let allergenVal = DataManager.shared.allergenVal else {return}
+        for i in 0...Array(allergenVal).count - 1{
+            if Array(allergenVal)[i] == "1"{
+                imageArr[i] = imageArr[i]+"x"
+            }
+        }
+        removeImage()
+    }
+    
+    func removeImage(){
+        for i in stride(from : imageArr.count - 1, to: 0, by: -1){
+            if !recipe!.Allergen![i]{
+                imageArr.remove(at: i)
+            }
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return imageArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "intolerantCell", for: indexPath)
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        cell.addSubview(image)
+        image.image = UIImage(named: imageArr[indexPath.row])
+       
+        
         return cell
     }
-    
-    
 }
+
