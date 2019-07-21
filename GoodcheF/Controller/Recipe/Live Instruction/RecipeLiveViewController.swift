@@ -143,21 +143,14 @@ extension RecipeLiveViewController : SFSpeechRecognizerDelegate{
         
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
             if let result = result {
-                //let bestString = result.bestTranscription.formattedString
-                //self.command(bestString.last!)
+                let bestString = result.bestTranscription.formattedString
+                print(bestString)
+                self.command(bestString.last!)
             }else if let error = error {
                 print(error)
             }
             
-            if result!.isFinal{
-                let bestString = result!.bestTranscription.formattedString
-                print(bestString)
-
-            }
         })
-        
-        
-        
     }
     
     func command(_ char : Character){
@@ -172,16 +165,19 @@ extension RecipeLiveViewController : SFSpeechRecognizerDelegate{
     
     func swipeNext(){
         print(#function)
+        audioEngine.stop()
+        
     }
     
     func swipeBack(){
         print(#function)
-
+        audioEngine.stop()
+        recordAndRecognizeSpeech()
     }
     
     func close(){
         print(#function)
-
-       // navigationController?.popViewController(animated: true)
+        audioEngine.stop()
+        navigationController?.popViewController(animated: true)
     }
 }

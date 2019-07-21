@@ -92,7 +92,7 @@ class RecipeEachViewController: UIViewController {
     func setButtonShadow(_ view : UIButton){
         view.clipsToBounds = false
         view.layer.masksToBounds = false
-        view.layer.cornerRadius = 15
+        view.layer.cornerRadius = 25
         view.layer.shadowColor = UIColor.lightGray.cgColor
         view.layer.shadowOpacity = 0.5
         view.layer.shadowOffset = CGSize(width: 0, height: 3)

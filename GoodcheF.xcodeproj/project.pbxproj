@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1C2B000122E458FC005F7E18 /* LiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B000022E458FC005F7E18 /* LiveCollectionViewCell.swift */; };
 		1C2BFFDB22E1AF79005F7E18 /* RecipeLiveViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2BFFDA22E1AF79005F7E18 /* RecipeLiveViewController+extension.swift */; };
+		47564D6A22E4AD0800CE5AB7 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47564D6822E4AD0800CE5AB7 /* ImageCollectionViewCell.swift */; };
+		47564D6B22E4AD0800CE5AB7 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47564D6922E4AD0800CE5AB7 /* ImageCollectionViewCell.xib */; };
+		47564D6D22E4D01B00CE5AB7 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47564D6C22E4D01B00CE5AB7 /* CustomTableView.swift */; };
 		47601AE322C9F65000ED158B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47601AE222C9F65000ED158B /* AppDelegate.swift */; };
 		47601AE822C9F65000ED158B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47601AE622C9F65000ED158B /* Main.storyboard */; };
 		47601AEB22C9F65000ED158B /* GoodcheF.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47601AE922C9F65000ED158B /* GoodcheF.xcdatamodeld */; };
@@ -34,6 +37,9 @@
 /* Begin PBXFileReference section */
 		1C2B000022E458FC005F7E18 /* LiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCollectionViewCell.swift; sourceTree = "<group>"; };
 		1C2BFFDA22E1AF79005F7E18 /* RecipeLiveViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeLiveViewController+extension.swift"; sourceTree = "<group>"; };
+		47564D6822E4AD0800CE5AB7 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		47564D6922E4AD0800CE5AB7 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		47564D6C22E4D01B00CE5AB7 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		47601ADF22C9F65000ED158B /* GoodcheF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodcheF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47601AE222C9F65000ED158B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47601AE722C9F65000ED158B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,6 +130,8 @@
 				47742A3922D71FA0003AD966 /* RecipeCardCollectionCell.xib */,
 				4788652A22DC907300F62789 /* RecipeCardTableCell.swift */,
 				4788652B22DC907300F62789 /* RecipeCardTableCell.xib */,
+				47564D6822E4AD0800CE5AB7 /* ImageCollectionViewCell.swift */,
+				47564D6922E4AD0800CE5AB7 /* ImageCollectionViewCell.xib */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -153,11 +161,12 @@
 		47601B0D22CA056000ED158B /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
+				47564D6C22E4D01B00CE5AB7 /* CustomTableView.swift */,
 				47601B0522CA050800ED158B /* RecipeHomeViewController.swift */,
+				47742A3C22D7200F003AD966 /* RecipeCategory */,
 				47601B0722CA053D00ED158B /* RecipeEachViewController.swift */,
 				477C24C522D472CA00B8F446 /* RecipeListViewController.swift */,
 				1C2BFFD522E1ADC9005F7E18 /* Live Instruction */,
-				47742A3C22D7200F003AD966 /* RecipeCategory */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -248,6 +257,7 @@
 				47601AF022C9F65100ED158B /* LaunchScreen.storyboard in Resources */,
 				47601AED22C9F65100ED158B /* Assets.xcassets in Resources */,
 				47601AE822C9F65000ED158B /* Main.storyboard in Resources */,
+				47564D6B22E4AD0800CE5AB7 /* ImageCollectionViewCell.xib in Resources */,
 				4782D62222DDF3C300C31A0B /* Recipe.json in Resources */,
 				4788652D22DC907300F62789 /* RecipeCardTableCell.xib in Resources */,
 				47742A3B22D71FA0003AD966 /* RecipeCardCollectionCell.xib in Resources */,
@@ -261,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47564D6A22E4AD0800CE5AB7 /* ImageCollectionViewCell.swift in Sources */,
 				47601B0C22CA055A00ED158B /* RecipeLiveViewController.swift in Sources */,
 				47601AFC22CA043F00ED158B /* DataManager.swift in Sources */,
 				477C24C422D355A200B8F446 /* SettingsViewController.swift in Sources */,
@@ -274,6 +285,7 @@
 				1C2BFFDB22E1AF79005F7E18 /* RecipeLiveViewController+extension.swift in Sources */,
 				477C24C922D49F5400B8F446 /* OnboardingViewController.swift in Sources */,
 				47742A3A22D71FA0003AD966 /* RecipeCardCollectionCell.swift in Sources */,
+				47564D6D22E4D01B00CE5AB7 /* CustomTableView.swift in Sources */,
 				47601B0822CA053D00ED158B /* RecipeEachViewController.swift in Sources */,
 				4778A34B22D5C75F00411A37 /* DummyDataModel.swift in Sources */,
 				4788652C22DC907300F62789 /* RecipeCardTableCell.swift in Sources */,

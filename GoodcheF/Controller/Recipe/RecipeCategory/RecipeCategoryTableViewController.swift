@@ -12,8 +12,8 @@ import UIKit
 class RecipeCategoryTableViewController: UITableViewController {
     
 
-    let categoryArr = ["Ayam & Bebek", "Daging Sapi & Kambing", "Hasil Laut", "Aneka Nasi", "Mie & Pasta", "Dibawah 30 Menit", "Favorit"]
-    let categories = [
+    var categoryArr = ["Ayam & Bebek", "Daging Sapi & Kambing", "Hasil Laut", "Aneka Nasi", "Mie & Pasta", "Dibawah 30 Menit", "Favorit"]
+    var categories = [
         ["ayam", "bebek"],
         ["sapi", "kambing"],
         ["ikan", "cumi", "udang", "kerang", "kepiting", "lobster"],
@@ -21,8 +21,8 @@ class RecipeCategoryTableViewController: UITableViewController {
         ["mie", "bihun", "spag"],
     ]
     var recipeCategoryArr = [[Recipe]]()
-    var recipeSectionIndexArr = [Int]()
-   
+    var countArr = [Int]()
+    var count = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +31,8 @@ class RecipeCategoryTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sectionIndex()
         loadCategory()
+        removeCategory()
         reloadData()
     }
     
@@ -45,14 +45,17 @@ class RecipeCategoryTableViewController: UITableViewController {
         }
     }
     
-    func sectionIndex(){
-        for i in 0 ... categoryArr.count - 1{
-            recipeSectionIndexArr.append(i)
-        }
-    }
-    
     func loadCategory(){
+        categoryArr = ["Ayam & Bebek", "Daging Sapi & Kambing", "Hasil Laut", "Aneka Nasi", "Mie & Pasta", "Dibawah 30 Menit", "Favorit"]
+        categories = [
+            ["ayam", "bebek"],
+            ["sapi", "kambing"],
+            ["ikan", "cumi", "udang", "kerang", "kepiting", "lobster"],
+            ["nasi"],
+            ["mie", "bihun", "spag"],
+        ]
         recipeCategoryArr = [[Recipe]]()
+        countArr = [Int]()
         for category in categories{
             loadCategory(category)
         }
@@ -61,56 +64,70 @@ class RecipeCategoryTableViewController: UITableViewController {
             loadFavorites()
         }
        
+        print(countArr)
     }
     
     func loadCategory(_ category : [String]){
         var tempArr = [Recipe]()
+        count = 0
         for recipe in DataManager.shared.recipeJson!{
             for item in category{
                 if recipe.Name.lowercased().contains(item) && !tempArr.contains(where: {$0.Name == recipe.Name}){
                     tempArr.append(recipe)
                 }
                 else if recipe.Ingredient.contains(where: { $0.Name.lowercased().contains(item)}) && !tempArr.contains(where: {$0.Name == recipe.Name}){
+                    count += 1
                     tempArr.append(recipe)
                 }
             }
         }
+        countArr.append(count)
         recipeCategoryArr.append(tempArr)
     }
+    
     func loadTime(){
+        count = 0
         var tempArr = [Recipe]()
         for recipe in DataManager.shared.recipeJson!{
             if recipe.Time <= 30{
                 tempArr.append(recipe)
+                count += 1
             }
         }
+        countArr.append(count)
         recipeCategoryArr.append(tempArr)
     }
     
     func loadFavorites(){
+        count = 0
         var tempArr = [Recipe]()
         for recipe in DataManager.shared.recipeJson!{
             for favorite in DataManager.shared.recipeFavorites{
                 if recipe.Id == favorite{
                     tempArr.append(recipe)
+                    count += 1
                 }
             }
         }
+        countArr.append(count)
         recipeCategoryArr.append(tempArr)
+    }
+    
+    func removeCategory(){
+        for i in stride(from: countArr.count - 1, to: 0, by: -1){
+            if countArr[i] == 0 {
+                categoryArr.remove(at: i)
+                recipeCategoryArr.remove(at: i)
+            }
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        if DataManager.shared.recipeFavorites.count > 0 {
-            return categoryArr.count
-        }
-        else {
-            return categoryArr.count - 1
-        }
+        return categoryArr.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 1
     }
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -142,6 +159,7 @@ class RecipeCategoryTableViewController: UITableViewController {
         if let parent = self.parent as? RecipeHomeViewController{
             cell.homeDelegate = parent
         }
+        cell.selectionStyle = .none 
         cell.backgroundView?.backgroundColor = .white
         cell.reloadTableData()
         cell.clipsToBounds = false
@@ -149,6 +167,9 @@ class RecipeCategoryTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

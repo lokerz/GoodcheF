@@ -44,7 +44,7 @@ class RecipeHomeViewController: UIViewController, HomeDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        
+        //categoryViewController.reloadData()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRecipeSegue" {

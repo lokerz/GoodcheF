@@ -15,12 +15,17 @@ class RecipeCardCollectionCell: UICollectionViewCell {
     @IBOutlet weak var subtitleOutlet: UILabel!
     @IBOutlet weak var shadowOutlet: UIView!
     @IBOutlet weak var contentViewOutlet: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var imageArr = ["gluten", "lactose", "egg", "crustacean", "nut", "msg"]
     var recipe : Recipe?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+       
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageCollectionViewCell")
        //print("collection cell called")
         
     }
@@ -28,6 +33,10 @@ class RecipeCardCollectionCell: UICollectionViewCell {
     override func prepareForReuse() {
         
     }
+    func reloadCellData(){
+        collectionView.reloadData()
+    }
+    
     func setCell(){
         guard let recipe = recipe else {return}
         titleOutlet.text = recipe.Name
@@ -41,7 +50,8 @@ class RecipeCardCollectionCell: UICollectionViewCell {
         
         self.backgroundColor = .clear
         setShadow()
-        
+        removeImage()
+        collectionView.alpha = 1
         shadowOutlet.backgroundColor = .white
         shadowOutlet.alpha = 0.70
     }
@@ -56,14 +66,24 @@ class RecipeCardCollectionCell: UICollectionViewCell {
 
     }
     
-    func setImage(){
-        guard let allergenVal = DataManager.shared.allergenVal else {return}
-        for i in 0...Array(allergenVal).count - 1{
-            if Array(allergenVal)[i] == "1"{
-                imageArr[i] = imageArr[i]+"x"
-            }
-        }
-        removeImage()
+}
+
+extension RecipeCardCollectionCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageArr.count
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = CGSize(width: 30, height: 30)
+        return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath)
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        cell.addSubview(image)
+        image.image = UIImage(named: imageArr[indexPath.row])
+        return cell
     }
     
     func removeImage(){
@@ -73,4 +93,5 @@ class RecipeCardCollectionCell: UICollectionViewCell {
             }
         }
     }
+    
 }

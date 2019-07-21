@@ -35,6 +35,12 @@ class RecipeCategoryTableViewCell: UITableViewCell {
     
     func reloadTableData(){
         collectionView.reloadData()
+        if let cells = collectionView.visibleCells as? [RecipeCardCollectionCell]{
+            for cell in cells{
+                cell.reloadCellData()
+            }
+        }
+        
     }
 }
 
