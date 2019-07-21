@@ -13,7 +13,8 @@ extension RecipeLiveViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 
         coordinator.animate(alongsideTransition: { (_) in
-//            self.collectionViewLayout.invalidateLayout()
+            
+            self.liveCollectionView.collectionViewLayout.invalidateLayout()
 
             if self.pageControl.currentPage == 0 {
                 self.liveCollectionView.contentOffset = .zero
@@ -26,10 +27,6 @@ extension RecipeLiveViewController {
             
         }
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: view.frame.width, height: view.frame.height)
-//    }
     
 
 }

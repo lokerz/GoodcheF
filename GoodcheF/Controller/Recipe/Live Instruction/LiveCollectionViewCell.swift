@@ -13,6 +13,6 @@ class LiveCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var judulResep: UILabel!
     @IBOutlet weak var stepResepKe: UILabel!
     @IBOutlet weak var caraMasakResep: UITextView!
-    
+    @IBOutlet weak var cardBackground: UIView!
     
 }

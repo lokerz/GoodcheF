@@ -9,8 +9,9 @@
 import UIKit
 
 
-class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    let layout = UICollectionViewFlowLayout()
     
     @IBOutlet weak var liveCollectionView: UICollectionView!
     
@@ -22,23 +23,30 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
         return steps.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! LiveCollectionViewCell
         
         cell.judulResep.text = judul
         var stepMasak = ""
-        for i in steps[indexPath.item]{
-            stepMasak.append("\(i)\n\n")
+        for step in steps[indexPath.row]{
+            stepMasak.append("\(step)\n\n")
         }
         cell.caraMasakResep.text = stepMasak
         cell.caraMasakResep.backgroundColor = .clear
         
-        cell.stepResepKe.text = "Step ke \(pageControl.currentPage + 1) dari \(steps.count)"
+        cell.stepResepKe.text = "Step ke \(indexPath.row + 1) dari \(steps.count)"
         
         cell.judulResep.textColor = .chocoColor
         cell.stepResepKe.textColor = .lightchocoColor
         cell.caraMasakResep.textColor = .darkchocoColor
+        
+        cell.cardBackground.backgroundColor = .yellowColor
+        cell.cardBackground.layer.cornerRadius = 20.0
     
         
         return cell
@@ -48,6 +56,7 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
         let pc = UIPageControl()
         pc.currentPage = 0
         pc.numberOfPages = steps.count
+        
         pc.currentPageIndicatorTintColor = .darkchocoColor
         pc.isEnabled = false
         pc.pageIndicatorTintColor = .creamColor
@@ -70,15 +79,24 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
         
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupBottomControls()
 
-        liveCollectionView.backgroundColor = .yellowColor
-        liveCollectionView.layer.cornerRadius = 20.0
+        liveCollectionView.backgroundColor = .clear
         liveCollectionView.isPagingEnabled = true
         
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height)
+    }
+    
 }
