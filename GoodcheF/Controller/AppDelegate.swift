@@ -68,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func loadDatabase(){
         DataManager.shared.loadJson()
         DataManager.shared.loadFavorites()
+        DataManager.shared.filterRecipes()
     }
     // MARK: - Core Data stack
 

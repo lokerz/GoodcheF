@@ -105,7 +105,6 @@ class OnboardingViewController: UIViewController,UITableViewDelegate, UITableVie
 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     func getCheckmark() -> String{
         let checkedMark = "000000"
-        
         return checkedMark
     }
     

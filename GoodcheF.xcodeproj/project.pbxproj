@@ -21,7 +21,7 @@
 		47601B0622CA050800ED158B /* RecipeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47601B0522CA050800ED158B /* RecipeHomeViewController.swift */; };
 		47601B0822CA053D00ED158B /* RecipeEachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47601B0722CA053D00ED158B /* RecipeEachViewController.swift */; };
 		47601B0C22CA055A00ED158B /* RecipeLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47601B0B22CA055A00ED158B /* RecipeLiveViewController.swift */; };
-		4772EEF422E04FFC00B3959C /* Recipe.sjson in Resources */ = {isa = PBXBuildFile; fileRef = 4772EEF322E04FFC00B3959C /* Recipe.sjson */; };
+		4767CA8222E335170063A559 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4767CA8122E335170063A559 /* CustomTableView.swift */; };
 		47742A3A22D71FA0003AD966 /* RecipeCardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47742A3822D71FA0003AD966 /* RecipeCardCollectionCell.swift */; };
 		47742A3B22D71FA0003AD966 /* RecipeCardCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47742A3922D71FA0003AD966 /* RecipeCardCollectionCell.xib */; };
 		47742A3E22D73579003AD966 /* RecipeCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47742A3D22D73579003AD966 /* RecipeCategoryTableViewCell.swift */; };
@@ -52,7 +52,7 @@
 		47601B0522CA050800ED158B /* RecipeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeHomeViewController.swift; sourceTree = "<group>"; };
 		47601B0722CA053D00ED158B /* RecipeEachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeEachViewController.swift; sourceTree = "<group>"; };
 		47601B0B22CA055A00ED158B /* RecipeLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeLiveViewController.swift; sourceTree = "<group>"; };
-		4772EEF322E04FFC00B3959C /* Recipe.sjson */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Recipe.sjson; sourceTree = "<group>"; };
+		4767CA8122E335170063A559 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		47742A3822D71FA0003AD966 /* RecipeCardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardCollectionCell.swift; sourceTree = "<group>"; };
 		47742A3922D71FA0003AD966 /* RecipeCardCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCardCollectionCell.xib; sourceTree = "<group>"; };
 		47742A3D22D73579003AD966 /* RecipeCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -152,7 +152,6 @@
 		47601AFA22CA041200ED158B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4772EEF322E04FFC00B3959C /* Recipe.sjson */,
 				4782D62122DDF3C300C31A0B /* Recipe.json */,
 				47601AFB22CA043F00ED158B /* DataManager.swift */,
 				47601AE922C9F65000ED158B /* GoodcheF.xcdatamodeld */,
@@ -169,6 +168,7 @@
 				477C24C522D472CA00B8F446 /* RecipeListViewController.swift */,
 				1C2BFFD522E1ADC9005F7E18 /* Live Instruction */,
 				47742A3C22D7200F003AD966 /* RecipeCategory */,
+				4767CA8122E335170063A559 /* CustomTableView.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -261,7 +261,6 @@
 				47601AED22C9F65100ED158B /* Assets.xcassets in Resources */,
 				47601AE822C9F65000ED158B /* Main.storyboard in Resources */,
 				4782D62222DDF3C300C31A0B /* Recipe.json in Resources */,
-				4772EEF422E04FFC00B3959C /* Recipe.sjson in Resources */,
 				4788652D22DC907300F62789 /* RecipeCardTableCell.xib in Resources */,
 				47742A3B22D71FA0003AD966 /* RecipeCardCollectionCell.xib in Resources */,
 			);
@@ -276,6 +275,7 @@
 			files = (
 				47601B0C22CA055A00ED158B /* RecipeLiveViewController.swift in Sources */,
 				47601AFC22CA043F00ED158B /* DataManager.swift in Sources */,
+				4767CA8222E335170063A559 /* CustomTableView.swift in Sources */,
 				477C24C422D355A200B8F446 /* SettingsViewController.swift in Sources */,
 				4778A34722D5C6ED00411A37 /* RecipeCategoryTableViewController.swift in Sources */,
 				47742A3E22D73579003AD966 /* RecipeCategoryTableViewCell.swift in Sources */,

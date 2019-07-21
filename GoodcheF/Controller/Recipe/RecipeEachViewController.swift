@@ -10,6 +10,7 @@ import UIKit
 
 class RecipeEachViewController: UIViewController {
 
+    @IBOutlet weak var recipeImageOutlet: UIImageView!
     @IBOutlet weak var recipeTitleOutlet: UILabel!
     @IBOutlet weak var recipeSubtitleOutlet: UILabel!
     @IBOutlet weak var favButtonOutlet: UIButton!
@@ -18,8 +19,14 @@ class RecipeEachViewController: UIViewController {
     @IBOutlet weak var ingredientTableView: UITableView!
     @IBOutlet weak var stepTableView: UITableView!
     
+    @IBOutlet weak var ingredientView: UIView!
+    @IBOutlet weak var stepView: UIView!
+    
     var recipe : Recipe?
     var isFavorite = false
+    var categoryArr = [String]()
+    var ingredientArr = [[Ingredient]]()
+    var img : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,31 +36,91 @@ class RecipeEachViewController: UIViewController {
         stepTableView.delegate = self
         stepTableView.dataSource = self
         recipeTitleOutlet.text = recipe?.Name
-
+        if let recipe = recipe{
+            recipeSubtitleOutlet.text = "Porsi \(recipe.Portion ?? "1") Orang, \(recipe.Time) Menit"
+            img = UIImage(named: (recipe.Image)!)
+            let imageData = img?.highQuality
+            recipeImageOutlet.image = UIImage(data: imageData! as Data)
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ingredientCategorize()
         setupNavBar()
         askIfFavorite()
+        setButtonShadow(cookButtonOutlet)
+        setShadow(ingredientView)
+        setShadow(stepView)
         setHeight()
-
-        print(recipe?.Ingredient?.count)
-        print(recipe?.Step.count)
-
-
-        // Do any additional setup after loading the view.
     }
     
     func setupNavBar(){
         self.title = ""
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.296022743, green: 0.03586935252, blue: 0.01109559834, alpha: 1)
     }
     
+    func setShadow(_ view : UIView){
+        view.layer.cornerRadius = 15
+        view.clipsToBounds = false
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.lightGray.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 0, height: 3)
+        view.layer.shadowRadius = 3
+        //view.backgroundColor = .clear
+    }
+    
+    func setButtonShadow(_ view : UIButton){
+        view.clipsToBounds = false
+        view.layer.masksToBounds = false
+        view.layer.cornerRadius = 15
+        view.layer.shadowColor = UIColor.lightGray.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 0, height: 3)
+        view.layer.shadowRadius = 3
+        //view.backgroundColor = .clear
+    }
+    
+    
     func askIfFavorite(){
-        for recipe in DataManager.shared.recipeFavorites{
-            if self.recipe?.Id == recipe{
-                isFavorite = true
-                favButtonOutlet.backgroundColor = .red
-                break
+        isFavorite = false
+        if DataManager.shared.recipeFavorites.contains(recipe!.Id){
+            isFavorite = true
+            favButtonOutlet.setImage(UIImage(named: "fav"), for: .normal)
+        }
+        else {
+            favButtonOutlet.setImage(UIImage(named: "unfav"), for: .normal)
+        }
+    }
+    
+    func ingredientCategorize(){
+        var categoryExist = false
+        
+        for ingredient in recipe!.Ingredient {
+            for category in categoryArr{
+                if ingredient.Category == category{
+                    categoryExist = true
+                }
+                else {
+                    categoryExist = false
+                }
             }
+            if !categoryExist {
+                categoryArr.append(ingredient.Category)
+            }
+        }
+        for i in 0...categoryArr.count - 1 {
+            var tempArr = [Ingredient]()
+            for ingredient in recipe!.Ingredient {
+                if ingredient.Category == categoryArr[i] {
+                    tempArr.append(ingredient)
+                }
+            }
+            ingredientArr.append(tempArr)
         }
     }
     
@@ -61,7 +128,7 @@ class RecipeEachViewController: UIViewController {
         var favoriteExist = false
         if isFavorite{
             isFavorite = false
-            favButtonOutlet.backgroundColor = .white
+            favButtonOutlet.setImage(UIImage(named: "unfav"), for: .normal)
             for i in 0...DataManager.shared.recipeFavorites.count - 1{
                 if recipe?.Id == DataManager.shared.recipeFavorites[i] {
                     DataManager.shared.recipeFavorites.remove(at: i)
@@ -70,7 +137,7 @@ class RecipeEachViewController: UIViewController {
             }
         }else{
             isFavorite = true
-            favButtonOutlet.backgroundColor = .red
+            favButtonOutlet.setImage(UIImage(named: "fav"), for: .normal)
             for favorite in DataManager.shared.recipeFavorites{
                 if recipe?.Id == favorite {
                     favoriteExist = true
@@ -87,24 +154,33 @@ class RecipeEachViewController: UIViewController {
 }
 extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource {
     func setHeight(){
-        for constraint in ingredientTableView.constraints {
-            if constraint.identifier == "ingredientTableHeight"{
-                constraint.constant = CGFloat(44 * ((recipe?.Ingredient?.count)! + ingredientTableView.numberOfSections))
-            }
-        }
-        for constraint in stepTableView.constraints {
-            if constraint.identifier == "stepTableHeight"{
-                constraint.constant = CGFloat(44 * ((recipe?.Step.count)! + stepTableView.numberOfSections))
-            }
-        }
+        print(ingredientTableView.intrinsicContentSize)
+        ingredientTableView.rowHeight = UITableView.automaticDimension
+        ingredientTableView.invalidateIntrinsicContentSize()
+        ingredientTableView.reloadData()
+        
+        
+        print(stepTableView.intrinsicContentSize)
+        stepTableView.rowHeight = UITableView.automaticDimension
+        stepTableView.invalidateIntrinsicContentSize()
+        stepTableView.reloadData()
         
         ingredientTableView.layoutIfNeeded()
         stepTableView.layoutIfNeeded()
+        ingredientView.layoutIfNeeded()
+        stepView.layoutIfNeeded()
+        
+        ingredientView.backgroundColor = .white
+        stepView.backgroundColor = .white
+        ingredientTableView.backgroundColor = .clear
+        stepTableView.backgroundColor = .clear
     }
+    
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == ingredientTableView{
-            return 2
+            return categoryArr.count
         }
         else{
             return 1
@@ -113,11 +189,11 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if tableView == ingredientTableView{
-            if section == 0{
-                return "Bahan Memasak "
+            if section == 0 {
+                return "Bahan Memasak"
             }
-            else {
-                return "Bumbu Halus"
+            else{
+                return categoryArr[section]
             }
         }
         else{
@@ -127,15 +203,25 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = .systemFont(ofSize: 17, weight: .medium)
-        header.textLabel?.textColor = .black
+        header.textLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        header.textLabel?.textColor = #colorLiteral(red: 0.296022743, green: 0.03586935252, blue: 0.01109559834, alpha: 1)
         header.backgroundView?.backgroundColor = .white
-        
+        if tableView == ingredientTableView{
+            if section == 0 {
+                header.textLabel?.text = "Bahan Memasak"
+            }
+            else{
+                header.textLabel?.text = categoryArr[section]
+            }
+        }
+        else{
+            header.textLabel?.text = "Cara Memasak"
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == ingredientTableView {
-            return (recipe?.Ingredient?.count)!
+            return ingredientArr[section].count
         }
         else {
             return (recipe?.Step.count)!
@@ -145,18 +231,33 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ingredientTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        if tableView == ingredientTableView {
-            
+        if let recipe = recipe{
+            if tableView == ingredientTableView {
+                if ingredientArr[indexPath.section][indexPath.row].Amount > 0{
+                cell.textLabel?.text = "\(ingredientArr[indexPath.section][indexPath.row].Amount) \(ingredientArr[indexPath.section][indexPath.row].Unit ?? "") \(ingredientArr[indexPath.section][indexPath.row].Name)"
+                }
+                else {
+                    cell.textLabel?.text = "\(ingredientArr[indexPath.section][indexPath.row].Unit ?? "") \(ingredientArr[indexPath.section][indexPath.row].Name)"
+                }
+                cell.indentationWidth = 10
+            }
+            else {
+                cell.textLabel?.text = "\(indexPath.row + 1). "
+                for step in recipe.Step[indexPath.row]{
+                    if let str = step as String?{
+                        cell.textLabel?.text = cell.textLabel!.text! + "\(str) "
+                    }
+                }
+                cell.textLabel?.textAlignment = .justified
+            }
         }
-        else {
-            
-        }
-        
-        
-        
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.textColor = #colorLiteral(red: 0.296022743, green: 0.03586935252, blue: 0.01109559834, alpha: 1)
+        cell.textLabel?.font = .systemFont(ofSize: 15)
+        cell.backgroundColor = .clear
         return cell
     }
+    
 
 }
 

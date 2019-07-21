@@ -11,21 +11,22 @@ import CoreData
 import UIKit
 
 struct Recipe : Decodable{
-    let Id : Int?
-    let Name : String?
+    let Id : Int
+    let Name : String
     let Source : String?
     let Desc : String?
-    let Time : String?
+    let Time : Int
     let Image : String?
-    let Ingredient : [Ingredient]?
-    let Step : [[String]]
+    let Portion : String?
+    var Ingredient : [Ingredient]
+    var Step : [[String]]
 }
 
 struct Ingredient : Decodable{
-    let Name : String?
-    let Amount : Int?
+    var Name : String
+    let Amount : Int
     let Unit : String?
-    let Category : String?
+    let Category : String
 }
 
 class DataManager : NSObject{
@@ -89,6 +90,93 @@ class DataManager : NSObject{
         }catch{
             print(error)
         }
+    }
+    
+    func filterRecipes(){
+        print(#function)
+        allergenVal = "000000"
+        if Array(allergenVal!)[0] == "1"{
+            filterGluten()
+        }
+        if Array(allergenVal!)[1] == "1"{
+            filterLactose()
+        }
+        if Array(allergenVal!)[2] == "1"{
+            filterEgg()
+        }
+        if Array(allergenVal!)[3] == "1"{
+            filterCrustacean()
+        }
+        if Array(allergenVal!)[4] == "1"{
+            filterNut()
+        }
+        if Array(allergenVal!)[5] == "1"{
+            filterMSG()
+        }
+    }
+    
+    func filterGluten(){
+        //ganti bahan jadi alternatif
+        let keyword = ["terigu"]
+        let keyword2 = ["roti", "spageti", "mie", "bakmi"]
+
         
+    }
+    
+    func filterLactose(){
+        //ganti bahan jadi susu almond/kedelai/kelapa(santan)
+        let keyword = ["kacang", "mede", "almond", "kenari", "nut"]
+
+    }
+    
+    func filterEgg(){
+        //resep hilang
+        print(#function)
+        let keyword = ["telur", "telor"]
+        for word in keyword{
+            recipeJson?.removeAll(where: {
+                $0.Name.lowercased().contains(word) || $0.Ingredient.contains(where: { $0.Name.lowercased().contains(word)
+                })
+            })
+        }
+    }
+    
+    func filterCrustacean(){
+        //kalau judul ilang, kalau bahan substitusi kakap
+        print(#function)
+        let keyword = ["kepiting", "udang", "lobster", "kerang", "rajungan", "siput", "tutut", "udang galah",]
+        //remove
+        for word in keyword{
+            recipeJson?.removeAll(where: {
+                $0.Name.lowercased().contains(word)
+            })
+        }
+        //substitute
+        for word in keyword{
+            for i in 0...recipeJson!.count - 1{
+                for j in 0...recipeJson![i].Ingredient.count - 1{
+                    if recipeJson![i].Ingredient[j].Name.lowercased().contains(word){
+                        recipeJson![i].Ingredient[j].Name = recipeJson![i].Ingredient[j].Name.lowercased().replacingOccurrences(of: word, with: "Ikan Kakap")
+                    }
+                }
+            }
+        }
+
+    }
+    
+    func filterNut(){
+        //resep hilang
+        print(#function)
+        let keyword = ["kacang", "mede", "almond", "kenari", "nut"]
+    
+    }
+    
+    func filterMSG(){
+        print(#function)
+        //bahan ganti kaldu organik
+        //kaleng -> fresh
+        //penyedap -> kaldu organik
+        let keyword = ["kaleng"]
+        let keyword2 = ["penyedap"]
     }
 }
