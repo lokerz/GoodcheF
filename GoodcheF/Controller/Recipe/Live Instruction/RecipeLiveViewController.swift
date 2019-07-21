@@ -180,6 +180,8 @@ extension RecipeLiveViewController : SFSpeechRecognizerDelegate{
             print(newIndexPath)
 
             liveCollectionView.scrollToItem(at: newIndexPath, at: .left, animated: true)
+            
+            pageControl.currentPage = newIndexPath.row
         }
         
         Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { timer in
@@ -196,6 +198,8 @@ extension RecipeLiveViewController : SFSpeechRecognizerDelegate{
             print(newIndexPath)
             
             liveCollectionView.scrollToItem(at: newIndexPath, at: .left, animated: true)
+            pageControl.currentPage = newIndexPath.row
+            
         }
         Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { timer in
             self.commandAvailable = true
