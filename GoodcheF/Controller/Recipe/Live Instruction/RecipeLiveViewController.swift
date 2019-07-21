@@ -8,28 +8,49 @@
 
 import UIKit
 
-extension UIColor {
-    static var mainColor = UIColor(red: 58/255, green: 6/255, blue: 4/255, alpha: 1)
-}
 
-class RecipeLiveViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    let pages = [
-        Page(titleText: "Ayam Kremes", headerText: "STEP 1 dari 6", bodyText: "Potong-potong ayam menjadi 4 bagian atau biarkan utuh.\n\nLumuri dengan bumbu halus, remas-remas hingga bumbu merata.\n\nBiarkan selama 1 jam atau lebih agar bumbu meresap."),
-        Page(titleText: "Ayam Kremes", headerText: "STEP 2 dari 6", bodyText: "Taruh ayam berbumbu dalam panci/wajan, tuangi air, masak hingga mendidih, kecilkan api dan tutup panci/wajan, masak terus selama ± 1 jam hingga airnya mengering.\n\nMatikan api, keluarkan ayam dari panci, pisahkan bumbunya, sisihkan."),
-        Page(titleText: "Ayam Kremes", headerText: "STEP 3 dari 6", bodyText: "Campur sisa bumbu dengan tepung terigu, tepung beras, tuangi 150 ml air, aduk rata."),
-        Page(titleText: "Ayam Kremes", headerText: "STEP 4 dari 6", bodyText: "Panaskan minyak goreng yang banyak dalam wajan, masukkan ayam hingga terendam minyak.\n\nGoreng hingga ¾ matang, masukkan ½ bagian bumbu secara bertahap. \n\nGoreng hingga ayam dan bumbu kering, angkat, tiriskan."),
-        Page(titleText: "Ayam Kremes", headerText: "STEP 5 dari 6", bodyText: "Lanjutkan menggoreng sisa bumbu secara bertahap hingga bumbu kering dan renyah, angkat, tiriskan."),
-        Page(titleText: "Ayam Kremes", headerText: "STEP 6 dari 6", bodyText: "Taruh ayam di atas piring saji, taburi dengan tepung bumbu yang kering dan renyah, hidangkan selagi hangat.")
-    ]
+    
+    @IBOutlet weak var liveCollectionView: UICollectionView!
+    
+    var judul = "Ayam Kremes"
+    var steps = [["1","2","3"],["4","5","6"],["7","8"],["9","10"],["11"],["12","13"]]
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return steps.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! LiveCollectionViewCell
+        
+        cell.judulResep.text = judul
+        var stepMasak = ""
+        for i in steps[indexPath.item]{
+            stepMasak.append("\(i)\n\n")
+        }
+        cell.caraMasakResep.text = stepMasak
+        cell.caraMasakResep.backgroundColor = .clear
+        
+        cell.stepResepKe.text = "Step ke \(pageControl.currentPage + 1) dari \(steps.count)"
+        
+        cell.judulResep.textColor = .chocoColor
+        cell.stepResepKe.textColor = .lightchocoColor
+        cell.caraMasakResep.textColor = .darkchocoColor
+    
+        
+        return cell
+    }
     
     lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.currentPage = 0
-        pc.numberOfPages = pages.count + 1
-        pc.currentPageIndicatorTintColor = .mainColor
+        pc.numberOfPages = steps.count
+        pc.currentPageIndicatorTintColor = .darkchocoColor
         pc.isEnabled = false
-        pc.pageIndicatorTintColor = UIColor(red: 251/255, green: 235/255, blue: 231/255, alpha: 1)
+        pc.pageIndicatorTintColor = .creamColor
         return pc
     }()
     
@@ -46,13 +67,6 @@ class RecipeLiveViewController: UICollectionViewController, UICollectionViewDele
             bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
             ])
-    }
-    
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        let x = targetContentOffset.pointee.x
-        
-        pageControl.currentPage = Int(x / view.frame.width)
         
     }
     
@@ -60,11 +74,11 @@ class RecipeLiveViewController: UICollectionViewController, UICollectionViewDele
         super.viewDidLoad()
         
         setupBottomControls()
+
+        liveCollectionView.backgroundColor = .yellowColor
+        liveCollectionView.layer.cornerRadius = 20.0
+        liveCollectionView.isPagingEnabled = true
         
-        collectionView?.backgroundColor = .white
-        collectionView?.register(PageCell.self, forCellWithReuseIdentifier: "cellId")
-        
-        collectionView?.isPagingEnabled = true
     }
 
 }

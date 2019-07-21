@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C2BFFD722E1AF4E005F7E18 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2BFFD622E1AF4E005F7E18 /* PageCell.swift */; };
-		1C2BFFD922E1AF66005F7E18 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2BFFD822E1AF66005F7E18 /* Page.swift */; };
+		1C2B000122E458FC005F7E18 /* LiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B000022E458FC005F7E18 /* LiveCollectionViewCell.swift */; };
 		1C2BFFDB22E1AF79005F7E18 /* RecipeLiveViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2BFFDA22E1AF79005F7E18 /* RecipeLiveViewController+extension.swift */; };
-		1C2BFFDD22E1AF97005F7E18 /* RecipeLiveViewController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2BFFDC22E1AF97005F7E18 /* RecipeLiveViewController+UICollectionView.swift */; };
 		47601AE322C9F65000ED158B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47601AE222C9F65000ED158B /* AppDelegate.swift */; };
 		47601AE822C9F65000ED158B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47601AE622C9F65000ED158B /* Main.storyboard */; };
 		47601AEB22C9F65000ED158B /* GoodcheF.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47601AE922C9F65000ED158B /* GoodcheF.xcdatamodeld */; };
@@ -34,10 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C2BFFD622E1AF4E005F7E18 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
-		1C2BFFD822E1AF66005F7E18 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		1C2B000022E458FC005F7E18 /* LiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCollectionViewCell.swift; sourceTree = "<group>"; };
 		1C2BFFDA22E1AF79005F7E18 /* RecipeLiveViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeLiveViewController+extension.swift"; sourceTree = "<group>"; };
-		1C2BFFDC22E1AF97005F7E18 /* RecipeLiveViewController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeLiveViewController+UICollectionView.swift"; sourceTree = "<group>"; };
 		47601ADF22C9F65000ED158B /* GoodcheF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodcheF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47601AE222C9F65000ED158B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47601AE722C9F65000ED158B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,10 +73,8 @@
 			isa = PBXGroup;
 			children = (
 				47601B0B22CA055A00ED158B /* RecipeLiveViewController.swift */,
-				1C2BFFD622E1AF4E005F7E18 /* PageCell.swift */,
-				1C2BFFD822E1AF66005F7E18 /* Page.swift */,
+				1C2B000022E458FC005F7E18 /* LiveCollectionViewCell.swift */,
 				1C2BFFDA22E1AF79005F7E18 /* RecipeLiveViewController+extension.swift */,
-				1C2BFFDC22E1AF97005F7E18 /* RecipeLiveViewController+UICollectionView.swift */,
 			);
 			path = "Live Instruction";
 			sourceTree = "<group>";
@@ -272,11 +266,9 @@
 				477C24C422D355A200B8F446 /* SettingsViewController.swift in Sources */,
 				4778A34722D5C6ED00411A37 /* RecipeCategoryTableViewController.swift in Sources */,
 				47742A3E22D73579003AD966 /* RecipeCategoryTableViewCell.swift in Sources */,
-				1C2BFFD922E1AF66005F7E18 /* Page.swift in Sources */,
+				1C2B000122E458FC005F7E18 /* LiveCollectionViewCell.swift in Sources */,
 				47601AEB22C9F65000ED158B /* GoodcheF.xcdatamodeld in Sources */,
-				1C2BFFD722E1AF4E005F7E18 /* PageCell.swift in Sources */,
 				477C24C622D472CA00B8F446 /* RecipeListViewController.swift in Sources */,
-				1C2BFFDD22E1AF97005F7E18 /* RecipeLiveViewController+UICollectionView.swift in Sources */,
 				47601AE322C9F65000ED158B /* AppDelegate.swift in Sources */,
 				47601B0622CA050800ED158B /* RecipeHomeViewController.swift in Sources */,
 				1C2BFFDB22E1AF79005F7E18 /* RecipeLiveViewController+extension.swift in Sources */,
