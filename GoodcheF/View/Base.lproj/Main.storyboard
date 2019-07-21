@@ -89,12 +89,197 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwr-Hk-ZSq">
-                                <rect key="frame" x="192" y="517" width="30" height="30"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TsO-Xb-j8V">
+                                <rect key="frame" x="26" y="168" width="362" height="560"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Skip"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Header" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyB-AS-JvH">
+                                        <rect key="frame" x="16" y="16" width="330" height="140"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Gluten" translatesAutoresizingMaskIntoConstraints="NO" id="S6c-M9-owJ">
+                                        <rect key="frame" x="53" y="164" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbn-7p-zfI">
+                                        <rect key="frame" x="91" y="164" width="255" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByX-3L-DGw">
+                                        <rect key="frame" x="91" y="186" width="255" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mJ-d4-OI4">
+                                        <rect key="frame" x="16" y="164" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="checkBox"/>
+                                        <connections>
+                                            <action selector="glutenClickAction:" destination="jrs-Te-hGk" eventType="touchUpInside" id="RV4-51-vWF"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Susu" translatesAutoresizingMaskIntoConstraints="NO" id="iI6-Tr-1El">
+                                        <rect key="frame" x="53" y="222" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nux-cu-fNv">
+                                        <rect key="frame" x="91" y="222" width="255" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3P-wM-Qvy">
+                                        <rect key="frame" x="91" y="244" width="255" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxD-F6-cpv">
+                                        <rect key="frame" x="16" y="222" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="checkBox"/>
+                                        <connections>
+                                            <action selector="susuClickAction:" destination="jrs-Te-hGk" eventType="touchUpInside" id="btx-qZ-XAy"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Telur" translatesAutoresizingMaskIntoConstraints="NO" id="7bK-R1-fty">
+                                        <rect key="frame" x="53" y="280" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WS-KN-C3c">
+                                        <rect key="frame" x="91" y="280" width="255" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubj-DT-2B8">
+                                        <rect key="frame" x="91" y="302" width="255" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kmf-P1-dOr">
+                                        <rect key="frame" x="16" y="280" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="checkBox"/>
+                                        <connections>
+                                            <action selector="telurClickAction:" destination="jrs-Te-hGk" eventType="touchUpInside" id="FJP-QQ-JIW"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Kepiting" translatesAutoresizingMaskIntoConstraints="NO" id="bc1-dQ-T61">
+                                        <rect key="frame" x="53" y="338" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BX2-Hw-8aG">
+                                        <rect key="frame" x="91" y="338" width="255" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9q-2K-fAk">
+                                        <rect key="frame" x="91" y="360" width="255" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iG8-ev-z4c">
+                                        <rect key="frame" x="16" y="338" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="checkBox"/>
+                                        <connections>
+                                            <action selector="kepitingClickAction:" destination="jrs-Te-hGk" eventType="touchUpInside" id="sVZ-Sa-NMC"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Kacang" translatesAutoresizingMaskIntoConstraints="NO" id="RF0-fs-uVA">
+                                        <rect key="frame" x="53" y="396" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUR-Af-YzR">
+                                        <rect key="frame" x="91" y="396" width="255" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joB-BA-Piy">
+                                        <rect key="frame" x="91" y="418" width="255" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVc-cf-rvq">
+                                        <rect key="frame" x="16" y="396" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="checkBox"/>
+                                        <connections>
+                                            <action selector="kacangClickAction:" destination="jrs-Te-hGk" eventType="touchUpInside" id="70w-2O-oEw"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Kimia" translatesAutoresizingMaskIntoConstraints="NO" id="Krr-UE-sB2">
+                                        <rect key="frame" x="53" y="454" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xD-WC-5SP">
+                                        <rect key="frame" x="91" y="454" width="255" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vr3-KB-NLf">
+                                        <rect key="frame" x="91" y="476" width="255" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQg-vN-iKo">
+                                        <rect key="frame" x="16" y="454" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="checkBox"/>
+                                        <connections>
+                                            <action selector="kimiaClickAction:" destination="jrs-Te-hGk" eventType="touchUpInside" id="Mx3-kL-aby"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Footer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57B-dF-j39">
+                                        <rect key="frame" x="16" y="512" width="330" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEE-ri-fUk">
+                                <rect key="frame" x="80" y="750" width="254" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="skipButtonAction:" destination="jrs-Te-hGk" eventType="touchUpInside" id="Oap-qi-sYv"/>
+                                    <action selector="simpanButtonAction:" destination="jrs-Te-hGk" eventType="touchUpInside" id="3qH-aE-Suy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irh-80-H4U">
+                                <rect key="frame" x="175" y="800" width="65" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="lewatiButtonAction:" destination="jrs-Te-hGk" eventType="touchUpInside" id="znm-Dv-W3m"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -103,12 +288,35 @@
                     </view>
                     <navigationItem key="navigationItem" id="o0d-Nh-CXN"/>
                     <connections>
+                        <outlet property="footerOutlet" destination="57B-dF-j39" id="Aqu-aA-0TH"/>
+                        <outlet property="glutenCheckmark" destination="0mJ-d4-OI4" id="Usm-7J-tRk"/>
+                        <outlet property="glutenSubtitleOutlet" destination="ByX-3L-DGw" id="Jzb-YN-VKF"/>
+                        <outlet property="glutenTitleOutlet" destination="rbn-7p-zfI" id="tWQ-C0-jPx"/>
+                        <outlet property="headerOutlet" destination="ZyB-AS-JvH" id="bFT-Rz-xiz"/>
+                        <outlet property="kacangCheckmark" destination="QVc-cf-rvq" id="PgB-Ye-MkO"/>
+                        <outlet property="kacangSubtitleOutlet" destination="joB-BA-Piy" id="SJ5-XC-oyv"/>
+                        <outlet property="kacangTitleOutlet" destination="UUR-Af-YzR" id="UaA-P7-dod"/>
+                        <outlet property="kepitingCheckmark" destination="iG8-ev-z4c" id="R3k-qc-Ntr"/>
+                        <outlet property="kepitingSubtitleOutlet" destination="i9q-2K-fAk" id="X7q-4K-Sdm"/>
+                        <outlet property="kepitingTitleOutlet" destination="BX2-Hw-8aG" id="Dx1-Gl-K9O"/>
+                        <outlet property="kimiaCheckmark" destination="bQg-vN-iKo" id="kjf-G0-I18"/>
+                        <outlet property="kimiaSubtitleOutlet" destination="Vr3-KB-NLf" id="cid-zY-VCA"/>
+                        <outlet property="kimiaTitleOutlet" destination="9xD-WC-5SP" id="TCg-cM-u2g"/>
+                        <outlet property="lewatiButton" destination="irh-80-H4U" id="p6F-Z8-c4h"/>
+                        <outlet property="onboardingBGOutlet" destination="TsO-Xb-j8V" id="XB5-mZ-Q9y"/>
+                        <outlet property="simpanButton" destination="JEE-ri-fUk" id="NHG-7C-L52"/>
+                        <outlet property="susuCheckmark" destination="CxD-F6-cpv" id="5MV-7t-DWZ"/>
+                        <outlet property="susuSubtitleOutlet" destination="G3P-wM-Qvy" id="xzt-wC-Szi"/>
+                        <outlet property="susuTitleOutlet" destination="Nux-cu-fNv" id="DS8-Az-rbn"/>
+                        <outlet property="telurCheckmark" destination="Kmf-P1-dOr" id="pC9-If-tdV"/>
+                        <outlet property="telurSubtitleOutlet" destination="ubj-DT-2B8" id="P8Y-DP-a2q"/>
+                        <outlet property="telurTitleOutlet" destination="9WS-KN-C3c" id="TJw-wk-yxY"/>
                         <segue destination="bhf-PW-wEA" kind="show" identifier="ResepSegue" id="KKk-Vy-6rx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vAE-YJ-vtG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="484" y="-1035"/>
+            <point key="canvasLocation" x="482.60869565217394" y="-1035.2678571428571"/>
         </scene>
         <!--Recipe-->
         <scene sceneID="mPZ-AR-Spj">
@@ -410,6 +618,13 @@
     </scenes>
     <resources>
         <image name="AyamSteak" width="6016" height="4016"/>
+        <image name="Gluten" width="92" height="92"/>
+        <image name="Kacang" width="92" height="92"/>
+        <image name="Kepiting" width="92" height="92"/>
+        <image name="Kimia" width="92" height="92"/>
+        <image name="Susu" width="92" height="92"/>
+        <image name="Telur" width="92" height="92"/>
+        <image name="checkBox" width="30" height="30"/>
         <image name="fav" width="50" height="50"/>
     </resources>
 </document>

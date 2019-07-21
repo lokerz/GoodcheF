@@ -1,106 +1,161 @@
 //
 //  OnboardingViewController.swift
-//  GoodcheF
+//  mc2Tomorrow
 //
-//  Created by Ridwan Abdurrasyid on 09/07/19.
-//  Copyright © 2019 Mentimun Mulus. All rights reserved.
+//  Created by Aditya Sanjaya on 21/07/19.
+//  Copyright © 2019 Aditya. All rights reserved.
 //
 
 import UIKit
 
-class OnboardingViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+extension UIColor {
+    static var darkchocoColor = UIColor(red: 58/255, green: 6/255, blue: 4/255, alpha: 1)
+    static var chocoColor = UIColor(red: 157/255, green: 77/255, blue: 79/255, alpha: 1)
+    static var lightchocoColor = UIColor(red: 215/255, green: 155/255, blue: 112/255, alpha: 1)
+    static var yellowColor = UIColor(red: 252/255, green: 223/255, blue: 128/255, alpha: 1)
+    static var creamColor = UIColor(red: 251/255, green: 235/255, blue: 231/255, alpha: 1)
+}
+
+class OnboardingViewController: UIViewController {
     
-    @IBOutlet weak var onBoardingView: UIView!
-    @IBOutlet weak var headerText: UITextView!
-    @IBOutlet weak var footerText: UITextView!
-    @IBOutlet weak var simpanButtonOutlet: UIButton!
-    @IBOutlet weak var lewatiButtonOutlet: UIButton!
+    @IBOutlet weak var onboardingBGOutlet: UIView!
+    @IBOutlet weak var headerOutlet: UILabel!
+    @IBOutlet weak var footerOutlet: UILabel!
     
-    let allergenTitles: [String] = DataManager.shared.allergenList
-    let allergenSubtitles: [String] = DataManager.shared.allergenSubtitleList
-    let allergenImages: [String] = ["Gluten", "Susu", "Telur", "Kepiting", "Kacang", "Kimia"]
-    let cellReuseIdentifier = "cell"
+    @IBOutlet weak var glutenTitleOutlet: UILabel!
+    @IBOutlet weak var susuTitleOutlet: UILabel!
+    @IBOutlet weak var telurTitleOutlet: UILabel!
+    @IBOutlet weak var kepitingTitleOutlet: UILabel!
+    @IBOutlet weak var kacangTitleOutlet: UILabel!
+    @IBOutlet weak var kimiaTitleOutlet: UILabel!
     
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var glutenSubtitleOutlet: UILabel!
+    @IBOutlet weak var susuSubtitleOutlet: UILabel!
+    @IBOutlet weak var telurSubtitleOutlet: UILabel!
+    @IBOutlet weak var kepitingSubtitleOutlet: UILabel!
+    @IBOutlet weak var kacangSubtitleOutlet: UILabel!
+    @IBOutlet weak var kimiaSubtitleOutlet: UILabel!
     
+    @IBOutlet weak var glutenCheckmark: UIButton!
+    @IBOutlet weak var susuCheckmark: UIButton!
+    @IBOutlet weak var telurCheckmark: UIButton!
+    @IBOutlet weak var kepitingCheckmark: UIButton!
+    @IBOutlet weak var kacangCheckmark: UIButton!
+    @IBOutlet weak var kimiaCheckmark: UIButton!
+    
+    
+    @IBOutlet weak var simpanButton: UIButton!
+    @IBOutlet weak var lewatiButton: UIButton!
+    
+    
+    var gluten = false
+    var susu = false
+    var telur = false
+    var kepiting = false
+    var kacang = false
+    var kimia = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        setupLayout()
-        setupTableView()
-    }
-    
-    func setupTableView(){
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.allowsSelection = false
-        tableView.isScrollEnabled = false
-        tableView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0)
-        tableView.separatorColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0)
-    }
-    
-    func setupLayout(){
-        
-        setView()
-        setText()
+        setLabel()
+        setBackground()
         setButton()
-        
     }
     
-    func setView(){
-        onBoardingView.layer.cornerRadius = 20.0
-        onBoardingView.backgroundColor = UIColor(red: 252/255, green: 223/255, blue: 128/255, alpha: 1)
+    func setLabel(){
+        headerOutlet.text = "Saya \nalergi/intoleran \nterhadap:"
+        headerOutlet.textColor = .darkchocoColor
+        footerOutlet.text = "Pilihan anda akan digunakan untuk memilah resep sesuai dengan kebutuhan anda."
+        footerOutlet.textColor = .darkchocoColor
+        glutenTitleOutlet.text = DataManager.shared.allergenList[0]
+        glutenSubtitleOutlet.text = DataManager.shared.allergenSubtitleList[0]
+        susuTitleOutlet.text = DataManager.shared.allergenList[1]
+        susuSubtitleOutlet.text = DataManager.shared.allergenSubtitleList[1]
+        telurTitleOutlet.text = DataManager.shared.allergenList[2]
+        telurSubtitleOutlet.text = DataManager.shared.allergenSubtitleList[2]
+        kepitingTitleOutlet.text = DataManager.shared.allergenList[3]
+        kepitingSubtitleOutlet.text = DataManager.shared.allergenSubtitleList[3]
+        kacangTitleOutlet.text = DataManager.shared.allergenList[4]
+        kacangSubtitleOutlet.text = DataManager.shared.allergenSubtitleList[4]
+        kimiaTitleOutlet.text = DataManager.shared.allergenList[5]
+        kimiaSubtitleOutlet.text = DataManager.shared.allergenSubtitleList[5]
     }
     
-    func  setText(){
-        let attributedHeaderText = NSMutableAttributedString(string: "Saya \nalergi/intoleran \nterhadap:", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 36), NSAttributedString.Key.foregroundColor: UIColor.init(displayP3Red: 58/255, green: 6/255, blue: 4/255, alpha: 1)])
-        
-        let attributedFooterText = NSMutableAttributedString(string: "Pilihan anda akan digunakan untuk memilah resep sesuai dengan kebutuhan anda.", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.semibold), NSAttributedString.Key.foregroundColor: UIColor.init(displayP3Red: 58/255, green: 6/255, blue: 4/255, alpha: 1)])
-        
-        headerText.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
-        footerText.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
-        headerText.attributedText = attributedHeaderText
-        footerText.attributedText = attributedFooterText
-        headerText.isEditable = false
-        footerText.isEditable = false
-        headerText.isScrollEnabled = false
-        footerText.isScrollEnabled = false
+    func setBackground(){
+        onboardingBGOutlet.backgroundColor = .yellowColor
+        onboardingBGOutlet.layer.cornerRadius = 20.0
     }
     
     func setButton(){
-        simpanButtonOutlet.backgroundColor = UIColor(red: 252/255, green: 223/255, blue: 128/255, alpha: 1)
-        simpanButtonOutlet.layer.cornerRadius = 20.0
-        simpanButtonOutlet.setTitle("Simpan", for: .normal)
-        simpanButtonOutlet.setTitleColor(UIColor.init(displayP3Red: 58/255, green: 6/255, blue: 4/255, alpha: 1), for: .normal)
-        simpanButtonOutlet.frame = CGRect(x: 80, y: 750, width: 254, height: 40)
+        simpanButton.setTitle("Simpan", for: .normal)
+        simpanButton.backgroundColor = .yellowColor
+        simpanButton.setTitleColor(.darkchocoColor, for: .normal)
+        simpanButton.layer.cornerRadius = 20.0
         
-        lewatiButtonOutlet.setTitle("Lewati", for: .normal)
-        lewatiButtonOutlet.setTitleColor(.black, for: .normal)
-        lewatiButtonOutlet.frame = CGRect(x: 80, y: 800, width: 254, height: 40)
+        lewatiButton.setTitle("Lewati", for: .normal)
+        lewatiButton.setTitleColor(.darkchocoColor, for: .normal)
+    }
+
+    @IBAction func glutenClickAction(_ sender: UIButton){
+        gluten =  !gluten
+        if gluten == true{
+            glutenCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
+        }
+        else{
+            glutenCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
+        }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.allergenTitles.count
+    @IBAction func susuClickAction(_ sender: UIButton){
+        susu =  !susu
+        if susu == true{
+            susuCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
+        }
+        else{
+            susuCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
+        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:MyCustomCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! MyCustomCell
-        
-        cell.myCellTitle.text = self.allergenTitles[indexPath.row]
-        cell.myCellTitle.textColor = UIColor.init(displayP3Red: 58/255, green: 6/255, blue: 4/255, alpha: 1)
-        
-        cell.myCellSubtitle.text = self.allergenSubtitles[indexPath.row]
-        cell.myCellSubtitle.textColor = UIColor.init(displayP3Red: 58/255, green: 6/255, blue: 4/255, alpha: 1)
-        
-        cell.self.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0)
-        
-        cell.myImageView.image = UIImage(named: self.allergenImages[indexPath.row])
-        
-        cell.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        
-        return cell
+    @IBAction func telurClickAction(_ sender: UIButton){
+        telur =  !telur
+        if telur == true{
+            telurCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
+        }
+        else{
+            telurCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
+        }
     }
+    
+    @IBAction func kepitingClickAction(_ sender: UIButton){
+        kepiting =  !kepiting
+        if kepiting == true{
+            kepitingCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
+        }
+        else{
+            kepitingCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
+        }
+    }
+    
+    @IBAction func kacangClickAction(_ sender: UIButton){
+        kacang =  !kacang
+        if kacang == true{
+            kacangCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
+        }
+        else{
+            kacangCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
+        }
+    }
+    
+    @IBAction func kimiaClickAction(_ sender: UIButton){
+        kimia =  !kimia
+        if kimia == true{
+            kimiaCheckmark.setImage(UIImage(named: "Checked"), for: .normal)
+        }
+        else{
+            kimiaCheckmark.setImage(UIImage(named: "checkBox"), for: .normal)
+        }
+    }
+
 
 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     func getCheckmark() -> String{
@@ -108,24 +163,21 @@ let context = (UIApplication.shared.delegate as! AppDelegate).persistentContaine
         return checkedMark
     }
     
-    @IBAction func saveButtonAction(_ sender: UIButton){
-        DataManager.shared.allergenVal = getCheckmark()
-        DataManager.shared.saveAllergen()
-        
+    @IBAction func simpanButtonAction(_ sender: Any) {
     }
-    @IBAction func skipButtonAction(_ sender: UIButton) {
-        DataManager.shared.saveAllergen()
-        performSegue(withIdentifier: "ResepSegue", sender: self)
-    }
-//    @IBAction func checkMarkAction(_ sender: UIButton) {
-//        if let button = sender as! UIbutton {
-//            if let image = UIImage(named:"Unchecked") {
-//                button.setImage(UIImage(named:"Checked.png"), forControlState: .Normal)
-//            }
-//            if let image = UIImage(named:"Checked") {
-//                button.setImage( UIImage(named:"Unchecked.png"), forControlState: .Normal)
-//            }
-//        } 
-//    }
     
+    @IBAction func lewatiButtonAction(_ sender: Any) {
+    }
+    
+    
+    
+//    @IBAction func saveButtonAction(_ sender: UIButton){
+//        DataManager.shared.allergenVal = getCheckmark()
+//        DataManager.shared.saveAllergen()
+//        
+//    }
+//    @IBAction func skipButtonAction(_ sender: UIButton) {
+//        DataManager.shared.saveAllergen()
+//        performSegue(withIdentifier: "ResepSegue", sender: self)
+//    }
 }
