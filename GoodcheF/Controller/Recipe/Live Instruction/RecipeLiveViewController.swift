@@ -115,7 +115,7 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
-        print("clicked")
+        audioEngine.stop()
         navigationController?.popViewController(animated: true)
     }
     
@@ -143,14 +143,45 @@ extension RecipeLiveViewController : SFSpeechRecognizerDelegate{
         
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
             if let result = result {
-                let bestString = result.bestTranscription.formattedString
-                self.title = bestString
+                //let bestString = result.bestTranscription.formattedString
+                //self.command(bestString.last!)
             }else if let error = error {
                 print(error)
             }
+            
+            if result!.isFinal{
+                let bestString = result!.bestTranscription.formattedString
+                print(bestString)
+
+            }
         })
+        
+        
         
     }
     
+    func command(_ char : Character){
+        if char == "t" || char == "s"{
+            swipeNext()
+        } else if char == "k" || char == "g"{
+            swipeBack()
+        } else if char == "e" {
+            close()
+        }
+    }
     
+    func swipeNext(){
+        print(#function)
+    }
+    
+    func swipeBack(){
+        print(#function)
+
+    }
+    
+    func close(){
+        print(#function)
+
+       // navigationController?.popViewController(animated: true)
+    }
 }
