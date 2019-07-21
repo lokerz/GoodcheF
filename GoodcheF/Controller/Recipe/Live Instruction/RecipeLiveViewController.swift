@@ -18,6 +18,7 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
     let speechRecognizer : SFSpeechRecognizer? = SFSpeechRecognizer()
     let request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask : SFSpeechRecognitionTask?
+    var commandAvailable = true
     //
     
     @IBOutlet weak var liveCollectionView: UICollectionView!
@@ -33,11 +34,12 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
         liveCollectionView.backgroundColor = .clear
         liveCollectionView.isPagingEnabled = true
         setupNavbar()
+        recordAndRecognizeSpeech()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        recordAndRecognizeSpeech()
     }
     
     func setupNavbar(){
@@ -118,13 +120,13 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
         audioEngine.stop()
         navigationController?.popViewController(animated: true)
     }
-    
 }
 
 
 extension RecipeLiveViewController : SFSpeechRecognizerDelegate{
     
     func recordAndRecognizeSpeech(){
+        commandAvailable = true
         let node = audioEngine.inputNode
         let recordingFormat = node.outputFormat(forBus: 0)
         node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
@@ -144,8 +146,13 @@ extension RecipeLiveViewController : SFSpeechRecognizerDelegate{
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
             if let result = result {
                 let bestString = result.bestTranscription.formattedString
-                print(bestString)
-                self.command(bestString.last!)
+                var lastString = ""
+                for segment in result.bestTranscription.segments{
+                    let indexTo = bestString.index(bestString.startIndex, offsetBy: segment.substringRange.location)
+                    lastString = bestString.substring(from: indexTo)
+                }
+                print(lastString)
+                self.command(lastString)
             }else if let error = error {
                 print(error)
             }
@@ -153,26 +160,47 @@ extension RecipeLiveViewController : SFSpeechRecognizerDelegate{
         })
     }
     
-    func command(_ char : Character){
-        if char == "t" || char == "s"{
+    func command(_ str : String){
+        if str.lowercased() == "next"{
             swipeNext()
-        } else if char == "k" || char == "g"{
+        } else if str.lowercased() == "back"{
             swipeBack()
-        } else if char == "e" {
+        } else if str.lowercased() == "close" || str == "exit"{
             close()
         }
     }
     
     func swipeNext(){
         print(#function)
-        audioEngine.stop()
         
+        print(liveCollectionView.indexPathsForVisibleItems)
+        if let indexPath = liveCollectionView.indexPathsForVisibleItems.first, commandAvailable {
+            commandAvailable = false
+            let newIndexPath = IndexPath(row: indexPath.row + 1 < steps.count ? indexPath.row + 1 : indexPath.row, section: indexPath.section)
+            print(newIndexPath)
+
+            liveCollectionView.scrollToItem(at: newIndexPath, at: .left, animated: true)
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { timer in
+            self.commandAvailable = true
+            print("command available")
+        })
     }
     
     func swipeBack(){
         print(#function)
-        audioEngine.stop()
-        recordAndRecognizeSpeech()
+        if let indexPath = liveCollectionView.indexPathsForVisibleItems.first, commandAvailable {
+            commandAvailable = false
+            let newIndexPath = IndexPath(row: indexPath.row - 1 < 0 ? 0 : indexPath.row - 1, section: indexPath.section)
+            print(newIndexPath)
+            
+            liveCollectionView.scrollToItem(at: newIndexPath, at: .left, animated: true)
+        }
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { timer in
+            self.commandAvailable = true
+            print("command available")
+        })
     }
     
     func close(){

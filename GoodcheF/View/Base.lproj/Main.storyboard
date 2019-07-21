@@ -575,7 +575,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="List Cara" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZK-Qu-44j">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="List Cara" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZK-Qu-44j">
                                                             <rect key="frame" x="24" y="152" width="334" height="471"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
