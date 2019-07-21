@@ -1,6 +1,6 @@
 //
 //  OnboardingViewController.swift
-//  mc2Tomorrow
+//  mc2morrow
 //
 //  Created by Aditya Sanjaya on 21/07/19.
 //  Copyright © 2019 Aditya. All rights reserved.
@@ -164,20 +164,15 @@ let context = (UIApplication.shared.delegate as! AppDelegate).persistentContaine
     }
     
     @IBAction func simpanButtonAction(_ sender: Any) {
+        DataManager.shared.allergenVal = getCheckmark()
+        DataManager.shared.saveAllergen()
+        
+
     }
     
     @IBAction func lewatiButtonAction(_ sender: Any) {
+        DataManager.shared.saveAllergen()
+        performSegue(withIdentifier: "ResepSegue", sender: self)
+
     }
-    
-    
-    
-//    @IBAction func saveButtonAction(_ sender: UIButton){
-//        DataManager.shared.allergenVal = getCheckmark()
-//        DataManager.shared.saveAllergen()
-//        
-//    }
-//    @IBAction func skipButtonAction(_ sender: UIButton) {
-//        DataManager.shared.saveAllergen()
-//        performSegue(withIdentifier: "ResepSegue", sender: self)
-//    }
 }
