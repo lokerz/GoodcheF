@@ -78,6 +78,7 @@ class DataManager : NSObject{
     }
     
     func loadFavorites(){
+        database.register(defaults: ["recipeFavorites" : ""])
         if let database = database.array(forKey: "recipeFavorites") as? [Int] {
             recipeFavorites = database
         }
