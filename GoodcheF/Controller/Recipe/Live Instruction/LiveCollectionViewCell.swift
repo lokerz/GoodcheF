@@ -15,4 +15,16 @@ class LiveCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var caraMasakResep: UITextView!
     @IBOutlet weak var cardBackground: UIView!
     
+    weak var liveDelegate : LiveDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(nextPage))
+        tap.numberOfTapsRequired = 1
+        cardBackground.addGestureRecognizer(tap)
+    }
+    
+    @objc func nextPage(){
+        liveDelegate?.swipeNext()
+    }
 }

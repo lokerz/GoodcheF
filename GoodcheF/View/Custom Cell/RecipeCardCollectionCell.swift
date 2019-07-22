@@ -87,7 +87,8 @@ extension RecipeCardCollectionCell : UICollectionViewDelegate, UICollectionViewD
     }
     
     func removeImage(){
-        for i in stride(from : imageArr.count - 1, to: 0, by: -1){
+        for i in stride(from : imageArr.count - 1, to: -1, by: -1){
+            print(i)
             if !recipe!.Allergen![i]{
                 imageArr.remove(at: i)
             }

@@ -140,6 +140,7 @@ class DataManager : NSObject{
                 for key in keyword[i]{
                     if recipeJson![j].Name.lowercased().contains(key) || recipeJson![j].Ingredient.contains(where: {$0.Name.lowercased().contains(key)}) {
                         temp = true
+                        print(recipeJson![j].Name , key)
                         break
                     }
                 }
@@ -271,7 +272,7 @@ class DataManager : NSObject{
         for word in keyword{
             recipeJson?.removeAll(where: {
                 $0.Ingredient.contains(where: {
-                    $0.Name.contains(word)
+                    $0.Name.lowercased().contains(word)
                 })
             })
         }

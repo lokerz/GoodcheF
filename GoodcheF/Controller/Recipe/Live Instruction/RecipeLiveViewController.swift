@@ -10,6 +10,10 @@ import UIKit
 import Speech
 import AVKit
 
+protocol LiveDelegate : AnyObject {
+    func swipeNext()
+}
+
 class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let layout = UICollectionViewFlowLayout()
@@ -19,6 +23,7 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
     let request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask : SFSpeechRecognitionTask?
     var commandAvailable = true
+    var timer = Timer()
     //
     
     @IBOutlet weak var liveCollectionView: UICollectionView!
@@ -48,7 +53,7 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return steps.count
+        return steps.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -59,15 +64,26 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! LiveCollectionViewCell
         
-        cell.judulResep.text = judul
-        var stepMasak = ""
-        for step in steps[indexPath.row]{
-            stepMasak.append("\(step)\n\n")
+        cell.liveDelegate = self
+        if indexPath.row == 0{
+            cell.judulResep.text = judul
+            var stepMasak = "Katakan 'Next' untuk menuju ke langkah berikutnya.\n\nKatakan 'Back' untuk kembali ke langkah sebelumnya. \n\nKatakan 'Close' untuk kembali ke resep"
+            cell.caraMasakResep.text = stepMasak
+            cell.caraMasakResep.backgroundColor = .clear
+            
+            cell.stepResepKe.text = "Instruksi"
         }
-        cell.caraMasakResep.text = stepMasak
-        cell.caraMasakResep.backgroundColor = .clear
+        else{
+            cell.judulResep.text = judul
+            var stepMasak = ""
+            for step in steps[indexPath.row - 1]{
+                stepMasak.append("\(step)\n\n")
+            }
+            cell.caraMasakResep.text = stepMasak
+            cell.caraMasakResep.backgroundColor = .clear
         
-        cell.stepResepKe.text = "Step ke \(indexPath.row + 1) dari \(steps.count)"
+            cell.stepResepKe.text = "Step ke \(indexPath.row) dari \(steps.count)"
+        }
         
         cell.judulResep.textColor = .chocoColor
         cell.stepResepKe.textColor = .lightchocoColor
@@ -83,7 +99,7 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
     lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.currentPage = 0
-        pc.numberOfPages = steps.count
+        pc.numberOfPages = steps.count + 1
         
         pc.currentPageIndicatorTintColor = .darkchocoColor
         pc.isEnabled = false
@@ -123,7 +139,7 @@ class RecipeLiveViewController: UIViewController, UICollectionViewDataSource, UI
 }
 
 
-extension RecipeLiveViewController : SFSpeechRecognizerDelegate{
+extension RecipeLiveViewController : SFSpeechRecognizerDelegate, LiveDelegate{
     
     func recordAndRecognizeSpeech(){
         commandAvailable = true
@@ -176,15 +192,15 @@ extension RecipeLiveViewController : SFSpeechRecognizerDelegate{
         print(liveCollectionView.indexPathsForVisibleItems)
         if let indexPath = liveCollectionView.indexPathsForVisibleItems.first, commandAvailable {
             commandAvailable = false
-            let newIndexPath = IndexPath(row: indexPath.row + 1 < steps.count ? indexPath.row + 1 : indexPath.row, section: indexPath.section)
+            let newIndexPath = IndexPath(row: indexPath.row + 1 < steps.count + 1 ? indexPath.row + 1 : indexPath.row, section: indexPath.section)
             print(newIndexPath)
 
             liveCollectionView.scrollToItem(at: newIndexPath, at: .left, animated: true)
             
             pageControl.currentPage = newIndexPath.row
         }
-        
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { timer in
+        timer.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { timer in
             self.commandAvailable = true
             print("command available")
         })
@@ -201,7 +217,8 @@ extension RecipeLiveViewController : SFSpeechRecognizerDelegate{
             pageControl.currentPage = newIndexPath.row
             
         }
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { timer in
+        timer.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { timer in
             self.commandAvailable = true
             print("command available")
         })
