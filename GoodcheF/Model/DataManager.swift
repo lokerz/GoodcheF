@@ -62,7 +62,8 @@ class DataManager : NSObject{
     var allergenVal : String?
     
     func saveAllergen(){
-        print(allergenVal)
+        database.register(defaults: ["allergenVal" : "000000"])
+        
         database.set(true, forKey: "allergenOnboarding")
         database.set(allergenVal, forKey: "allergenVal")
     }
