@@ -60,9 +60,7 @@ class RecipeCategoryTableViewController: UITableViewController {
             loadCategory(category)
         }
         loadTime()
-        if DataManager.shared.recipeFavorites.count > 0 {
-            loadFavorites()
-        }
+        loadFavorites()
        
         print(countArr)
     }
