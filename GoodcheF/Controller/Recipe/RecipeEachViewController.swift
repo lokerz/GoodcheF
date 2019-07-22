@@ -289,6 +289,7 @@ extension RecipeEachViewController : UITableViewDelegate, UITableViewDataSource 
 extension RecipeEachViewController : UICollectionViewDataSource, UICollectionViewDelegate{
     
     func setImage(){
+        imageArr = ["gluten", "lactose", "egg", "crustacean", "nut", "msg"]
         guard let allergenVal = DataManager.shared.allergenVal else {return}
         for i in 0...Array(allergenVal).count - 1{
             if Array(allergenVal)[i] == "1"{

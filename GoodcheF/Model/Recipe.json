@@ -1177,5 +1177,158 @@
         "Sweet Potato Scramble buatan Anda sudah jadi dan siap disajikan."
       ]
     ]
+  },
+  {
+    "Id" : 10,
+    "Name" : "Ifumie Spesial",
+    "Source" : "Primarasa",
+    "Desc" : "Siraman aneka seafood dan sayuran di atas mi sangat menggugah selera. Ifumie Special ini sangat lezat dengan porsi yang cukup mengenyangkan. Cocok untuk menu makan malam istimewa bersama pasangan.",
+    "Portion" : "2",
+    "Time" : 40,
+    "Image" : "IfumieSpesial",
+    "Ingredient" : [
+      {
+        "Name" : "Cumi-cumi kupas, tanpa kepala.",
+        "Amount" : 100,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Udang kupas",
+        "Amount" : 100,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Bakso ikan",
+        "Amount" : 4,
+        "Unit" : "buah",
+        "Category" : ""
+      },
+      {
+        "Name" : "Brokoli, potong menurut kuntumnya.",
+        "Amount" : 75,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Wortel, kupas, iris tipis serong.",
+        "Amount" : 1,
+        "Unit" : "Buah",
+        "Category" : ""
+      },
+      {
+        "Name" : "Caisim, iris 3 cm.",
+        "Amount" : 50,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Kol",
+        "Amount" : 50,
+        "Unit" : "Gram",
+        "Category" : ""
+      },
+      {
+        "Name" : "Minyak goreng",
+        "Amount" : 0,
+        "Unit" : "",
+        "Category" : ""
+      },
+      {
+        "Name" : "Bawang putih, cincang.",
+        "Amount" : 3,
+        "Unit" : "Siung",
+        "Category" : ""
+      },
+      {
+        "Name" : "Jahe, cincang.",
+        "Amount" : 1,
+        "Unit" : "cm",
+        "Category" : ""
+      },
+      {
+        "Name" : "Daun bawang, iris 2 cm.",
+        "Amount" : 2,
+        "Unit" : "Batang",
+        "Category" : ""
+      },
+      {
+        "Name" : "Seledri, iris 2 cm.",
+        "Amount" : 1,
+        "Unit" : "Batang",
+        "Category" : ""
+      },
+      {
+        "Name" : "Tepung maizena, larutkan dalam sedikit air.",
+        "Amount" : 1,
+        "Unit" : "Sdm",
+        "Category" : ""
+      },
+      {
+        "Name" : "Ifumie matang, siap pakai.",
+        "Amount" : 150,
+        "Unit" : "gr",
+        "Category" : ""
+      },
+      {
+        "Name" : "Kaldu",
+        "Amount" : 500,
+        "Unit" : "ml",
+        "Category" : "Saus Bumbu"
+      },
+      {
+        "Name" : "Kecap ikan",
+        "Amount" : 2,
+        "Unit" : "Sdm",
+        "Category" : "Saus Bumbu"
+      },
+      {
+        "Name" : "Minyak wijen",
+        "Amount" : 1,
+        "Unit" : "Sdt",
+        "Category" : "Saus Bumbu"
+      },
+      {
+        "Name" : "Merica bubuk",
+        "Amount" : 0,
+        "Unit" : "1/2 sdt",
+        "Category" : "Saus Bumbu"
+      },
+      {
+        "Name" : "Angciu",
+        "Amount" : 2,
+        "Unit" : "Sdt",
+        "Category" : "Saus Bumbu"
+      },
+      {
+        "Name" : "Garam",
+        "Amount" : 1,
+        "Unit" : "Sdt",
+        "Category" : "Saus Bumbu"
+      },
+      {
+        "Name" : "Gula pasir",
+        "Amount" : 1,
+        "Unit" : "Sdt",
+        "Category" : "Saus Bumbu"
+      }
+    ],
+    "Step" : [
+      [
+        "Iris melintang cumi-cumi ukuran 1 cm, belah punggung udang jangan sampai putus, iris tipis bakso ikan. Seduh brokoli, wortel, dan caisim dengan air panas sebentar saja, tiriskan, sisihkan. Iris-iris kol ukuran 2 cm."
+      ],
+      [
+        "Panaskan 3 sdm minyak goreng dalam wajan, tumis bawang putih dan jahe hingga harum. ",
+        "Masukkan berturut-turut cumi-cumi, udang, dan bakso, aduk hingga udang berubah warna. Masukkan kol, brokoli, wortel, dan caisim."
+      ],
+      [
+        "Tuangi campuran saus, tambahkan daun bawang dan seledri, aduk, masak hingga mendidih. ",
+        "Masukkan larutan tepung maizena, aduk hingga mengental, angkat segera."
+      ],
+      [
+        "Taruh ifumi di atas piring saji, tuangi sayuran tumis. Hidangkan segera selagi panas."
+      ]
+    ]
   }
 ]

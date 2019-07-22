@@ -179,9 +179,9 @@ extension RecipeLiveViewController : SFSpeechRecognizerDelegate, LiveDelegate{
     func command(_ str : String){
         if str.lowercased() == "next"{
             swipeNext()
-        } else if str.lowercased() == "back"{
+        } else if str.lowercased() == "back" || str.lowercased() == "make" || str.lowercased() == "bake" || str.lowercased() == "beg"{
             swipeBack()
-        } else if str.lowercased() == "close" || str == "exit"{
+        } else if str.lowercased() == "close" || str.lowercased() == "exit" || str.lowercased() == "done"{
             close()
         }
     }

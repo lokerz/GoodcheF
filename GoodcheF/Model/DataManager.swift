@@ -143,7 +143,6 @@ class DataManager : NSObject{
                 for key in keyword[i]{
                     if recipeJson![j].Name.lowercased().contains(key) || recipeJson![j].Ingredient.contains(where: {$0.Name.lowercased().contains(key)}) {
                         temp = true
-                        print(recipeJson![j].Name , key)
                         break
                     }
                 }
@@ -176,7 +175,7 @@ class DataManager : NSObject{
                 for j in 0...recipeJson![i].Step.count - 1{
                     for k in 0...recipeJson![i].Step[j].count - 1{
                         if recipeJson![i].Step[j][k].lowercased().contains(word){
-                            recipeJson![i].Step[j][k] = recipeJson![i].Step[j][k].lowercased().replacingOccurrences(of: word, with: "pengganti Tepung Terigu")
+                            recipeJson![i].Step[j][k] = recipeJson![i].Step[j][k].lowercased().replacingOccurrences(of: word, with: "pengganti tepung terigu")
                         }
                     }
                 }

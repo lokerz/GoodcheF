@@ -15,17 +15,16 @@ class RecipeCardCollectionCell: UICollectionViewCell {
     @IBOutlet weak var subtitleOutlet: UILabel!
     @IBOutlet weak var shadowOutlet: UIView!
     @IBOutlet weak var contentViewOutlet: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var imageCollectionView: UICollectionView!
     
     var imageArr = ["gluten", "lactose", "egg", "crustacean", "nut", "msg"]
     var recipe : Recipe?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageCollectionViewCell")
+        imageCollectionView.dataSource = self
+        imageCollectionView.delegate = self
+        imageCollectionView.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageCollectionViewCell")
        //print("collection cell called")
         
     }
@@ -33,11 +32,14 @@ class RecipeCardCollectionCell: UICollectionViewCell {
     override func prepareForReuse() {
         
     }
+    
     func reloadCellData(){
-        collectionView.reloadData()
+        print(#function)
+        imageCollectionView.reloadData()
     }
     
     func setCell(){
+        imageArr = ["gluten", "lactose", "egg", "crustacean", "nut", "msg"]
         guard let recipe = recipe else {return}
         titleOutlet.text = recipe.Name
         subtitleOutlet.text = "Porsi \(recipe.Portion ?? "1") Orang, \(recipe.Time) Menit"
@@ -51,7 +53,7 @@ class RecipeCardCollectionCell: UICollectionViewCell {
         self.backgroundColor = .clear
         setShadow()
         removeImage()
-        collectionView.alpha = 1
+        imageCollectionView.alpha = 1
         shadowOutlet.backgroundColor = .white
         shadowOutlet.alpha = 0.70
     }
@@ -60,9 +62,9 @@ class RecipeCardCollectionCell: UICollectionViewCell {
         self.clipsToBounds = false
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.layer.shadowRadius = 4
+        self.layer.shadowOpacity = 0.75
+        self.layer.shadowOffset = CGSize(width: 0, height: 4)
+        self.layer.shadowRadius = 3
 
     }
     
@@ -88,7 +90,6 @@ extension RecipeCardCollectionCell : UICollectionViewDelegate, UICollectionViewD
     
     func removeImage(){
         for i in stride(from : imageArr.count - 1, to: -1, by: -1){
-            print(i)
             if !recipe!.Allergen![i]{
                 imageArr.remove(at: i)
             }

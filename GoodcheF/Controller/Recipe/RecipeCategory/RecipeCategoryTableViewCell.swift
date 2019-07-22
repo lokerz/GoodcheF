@@ -35,12 +35,6 @@ class RecipeCategoryTableViewCell: UITableViewCell {
     
     func reloadTableData(){
         collectionView.reloadData()
-        if let cells = collectionView.visibleCells as? [RecipeCardCollectionCell]{
-            for cell in cells{
-                cell.reloadCellData()
-            }
-        }
-        
     }
 }
 
@@ -54,6 +48,8 @@ extension RecipeCategoryTableViewCell : UICollectionViewDelegate, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCardCollectionCell", for : indexPath) as! RecipeCardCollectionCell
         cell.recipe = recipes[indexPath.row]
         cell.setCell()
+        cell.reloadCellData()
+        cell.imageCollectionView.reloadData()
         return cell
     }
     

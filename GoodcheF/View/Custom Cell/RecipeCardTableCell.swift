@@ -29,10 +29,11 @@ class RecipeCardTableCell: UITableViewCell {
     
     func setCell(){
         cardOutlet.layer.shadowColor = UIColor.lightGray.cgColor
-        cardOutlet.layer.shadowOpacity = 0.3
-        cardOutlet.layer.shadowOffset = CGSize(width: 0, height: 4)
-        cardOutlet.layer.shadowRadius = 7
+        cardOutlet.layer.shadowOpacity = 0.75
+        cardOutlet.layer.shadowOffset = CGSize(width: 0, height: 5)
+        cardOutlet.layer.shadowRadius = 5
         cardOutlet.backgroundColor = .clear
+    
         
         imageOutlet.layer.cornerRadius = 15
         imageOutlet.layer.masksToBounds = true

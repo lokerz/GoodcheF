@@ -62,7 +62,6 @@ class RecipeCategoryTableViewController: UITableViewController {
         loadTime()
         loadFavorites()
        
-        print(countArr)
     }
     
     func loadCategory(_ category : [String]){
@@ -71,6 +70,8 @@ class RecipeCategoryTableViewController: UITableViewController {
         for recipe in DataManager.shared.recipeJson!{
             for item in category{
                 if recipe.Name.lowercased().contains(item) && !tempArr.contains(where: {$0.Name == recipe.Name}){
+                    print(recipe.Name, category)
+                    count += 1
                     tempArr.append(recipe)
                 }
                 else if recipe.Ingredient.contains(where: { $0.Name.lowercased().contains(item)}) && !tempArr.contains(where: {$0.Name == recipe.Name}){
@@ -112,6 +113,7 @@ class RecipeCategoryTableViewController: UITableViewController {
     }
     
     func removeCategory(){
+        print(countArr)
         for i in stride(from: countArr.count - 1, to: 0, by: -1){
             if countArr[i] == 0 {
                 categoryArr.remove(at: i)
@@ -143,13 +145,13 @@ class RecipeCategoryTableViewController: UITableViewController {
         footer.backgroundView?.backgroundColor = .clear
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 213
+        return 215
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 29
     }
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 30
+        return 25
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for : indexPath) as! RecipeCategoryTableViewCell

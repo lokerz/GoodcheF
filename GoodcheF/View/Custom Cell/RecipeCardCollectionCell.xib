@@ -68,6 +68,7 @@
             <connections>
                 <outlet property="collectionView" destination="LCp-NW-RhO" id="KbS-Vc-dA9"/>
                 <outlet property="contentViewOutlet" destination="9Fk-ZD-Me0" id="Gcl-S6-8yx"/>
+                <outlet property="imageCollectionView" destination="LCp-NW-RhO" id="48a-86-sgh"/>
                 <outlet property="imageOutlet" destination="Grl-Wd-eRZ" id="rKy-j2-c8J"/>
                 <outlet property="shadowOutlet" destination="Swu-oJ-n4Y" id="a7l-SA-2XU"/>
                 <outlet property="subtitleOutlet" destination="LBi-zW-ALc" id="ebM-5u-P3R"/>
